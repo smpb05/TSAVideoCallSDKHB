@@ -6,7 +6,7 @@
 //
 
 import TSAVideoCallSDK
-class TSAVideoCallSubscriber {
+public class TSAVideoCallSubscriber {
     
     let renderer: TSAVideoCallView = TSAVideoCallView()
     

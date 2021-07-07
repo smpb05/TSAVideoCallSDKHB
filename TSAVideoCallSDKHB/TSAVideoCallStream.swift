@@ -6,6 +6,6 @@
 //
 
 import Foundation
-class TSAVideoCallStream {
+public class TSAVideoCallStream {
     
 }

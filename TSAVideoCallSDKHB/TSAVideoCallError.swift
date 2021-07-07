@@ -6,6 +6,6 @@
 //
 
 import Foundation
-class TSAVideoCallError{
+public class TSAVideoCallError{
     
 }

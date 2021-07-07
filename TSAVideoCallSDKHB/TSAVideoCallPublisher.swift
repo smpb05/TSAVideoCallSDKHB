@@ -8,7 +8,7 @@
 import TSAVideoCallSDK
 import WebRTC
 
-class TSAVideoCallPublisher {
+public class TSAVideoCallPublisher {
  
     
     let renderer = TSAVideoCallView()
