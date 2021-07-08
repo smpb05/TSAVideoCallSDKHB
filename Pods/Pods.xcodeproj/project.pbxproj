@@ -19,44 +19,44 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0108209C66E8A7445D23E8F941551E88 /* TSAVideoCallTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42482109147A5A71E080A41A6CDBA5EB /* TSAVideoCallTransaction.swift */; };
 		0A0E8476402B53B091B91A7DE07E0008 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8608A8D08A94A4470447743A91F043F8 /* Engine.swift */; };
 		0CC54E4D0945262C1B835B699345B034 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA03C1B02ACF92B13D2C158A094D3E19 /* WebSocket.swift */; };
-		13712892C0966964E8FDAFE801DE5876 /* TSAVideoCallSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2912EF91F5C9653BF3506AD397C4CC50 /* TSAVideoCallSDK-dummy.m */; };
 		190BC16FCBB53F6C6F2C0618B6BE7DDA /* FoundationHTTPServerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6D8F5F20D4419E97B7C2FE40C27908 /* FoundationHTTPServerHandler.swift */; };
 		195E17A825CB18759C7D6511DACCB3E9 /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E368044F219202C558F5E09F4F9F47C /* Server.swift */; };
 		19E712862F3F845060EA7DADEAD9BC59 /* FoundationTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1BB689F63E24652957A754E4186179 /* FoundationTransport.swift */; };
 		1BCEC1C72A76476B70CE4B032A9D9B32 /* StringHTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09011D5CBBC8CD33F1AD4F8734E0080A /* StringHTTPHandler.swift */; };
-		255C1452071CCC6FCC641C350C007263 /* TSAVideoCallConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E3F9EC18667194234E9065B1897DE2 /* TSAVideoCallConnection.swift */; };
 		2BEA14330E7778E72A0630EACC6E2AC7 /* Pods-TSAVideoCallSDKHB-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 46311306784BECD9729F80B668BD9AF7 /* Pods-TSAVideoCallSDKHB-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		359D3455A362843977E8E3076B7D8162 /* TCPTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA47D704811ABC56308EA8ED8C7D158 /* TCPTransport.swift */; };
 		36D1530899987EF165D0AFC6D2B9EAF2 /* FrameCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F41AF932C5F7140069A4C060E7A016 /* FrameCollector.swift */; };
 		37E36C07C168E5737FBA757736AB1263 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2987CB11B73874FFB96AECB5CC5EB09 /* Data+Extensions.swift */; };
+		434D21E531C9DEB93D0754729F43B5CD /* TSAVideoCallHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDA8EDF0098759E1B6DCF99E1A5888 /* TSAVideoCallHandle.swift */; };
 		4572F22239A84AC23B262764D429E2EB /* Framer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF80B4F7A5889B1A6132AADC02A3299F /* Framer.swift */; };
 		4D322C7978617308B276D6F4902C2335 /* WSEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869ABE0894C1A37A292BA5A77E39881 /* WSEngine.swift */; };
 		6007A76C7F6D0E058CDC43B0BACB2B91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		628E98941E4E1215B5C7D6E73F3D6A98 /* TSAVideoCallSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BFD5933BA6BD9BF4F4DCFF30628F2044 /* TSAVideoCallSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		65F469B66A56AAD74491CC91CD4D4A1B /* TSAVideoCallHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B076CC1AF49C7E078A323A575D43A14 /* TSAVideoCallHandle.swift */; };
+		614DF5F693CC7AEFD88ECFFE9046E105 /* TSAVideoCallMediaControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F913911246C6162A205F93C30893630E /* TSAVideoCallMediaControllers.swift */; };
+		628E98941E4E1215B5C7D6E73F3D6A98 /* TSAVideoCallSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E06FA8F7D82F25A532CB9B297751665 /* TSAVideoCallSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		703C0586C478A922E21934D3B149A71E /* Starscream-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DC0579F2B910FD7CE97A9404462521 /* Starscream-dummy.m */; };
 		793D18E42CC454D1C4225339797DB9EB /* WSCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D7C23EE4AC5B0111A985B38EB314A36 /* WSCompression.swift */; };
-		81F04DF27A048EC63A0BFBE94D16B497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFF18CAC905DF54CFBB12FACF39E3815 /* Assets.xcassets */; };
+		81F04DF27A048EC63A0BFBE94D16B497 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77D931474454FCC1114817A78BB7CCC7 /* Assets.xcassets */; };
 		822BCFA4BE6B71B18DF70B82A647603E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		845C904E166A73DABFE43B70151A336D /* TSAVideoCallConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EFFF010C5DDD1F4BB94D92BD6B086B /* TSAVideoCallConnection.swift */; };
 		894E47358149672D5810C31E4B64AF0D /* HTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F718FC68CE06D466B91BDA6F8258F5ED /* HTTPHandler.swift */; };
-		918687013F9FF8D126C3CAB3C779A02E /* RTCSessionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CA210EEB74E830D1DBAA40EF7A79B6 /* RTCSessionDescription.swift */; };
 		946911E4FFC48BF8F84D076D258A1322 /* FoundationSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F9E6C16355AD5C3F4DDD6C5348DE72 /* FoundationSecurity.swift */; };
 		99CC2D5DC15DBA9F5A494E76FF940B62 /* Starscream-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6387F2778497A9B63DF6B13A5F3DA5C1 /* Starscream-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9EFE6A0D5B8B71733BBD9E5CC45AD78F /* TSAVideoCallMediaControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3608C1E85D7D83272CB2BB6DDAD7CC /* TSAVideoCallMediaControllers.swift */; };
 		A0EC5E78161EEAC50C157030C6195459 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		B037CBBCF28B1C3C770D4B06DA8E49CB /* TSAVideoCallSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3EBA062C045D14EA65CD2E850C2DEF /* TSAVideoCallSocket.swift */; };
+		A571923F632241036C304C0DF9F055EE /* TSAVideoCallSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B73E8C6C6F392A6D6D3F37B814325E1 /* TSAVideoCallSDK-dummy.m */; };
+		ACF64188257D98425F3FDCD1D45FC72B /* TSAVideoCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8788011870E49C0270AB6C03DD282A1 /* TSAVideoCallView.swift */; };
+		BBF3CB284073A16FC52B05A93CEA854C /* TSAVideoCallMediaControllersDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD913223A86B79263C4EF1C6458B2CCC /* TSAVideoCallMediaControllersDelegate.swift */; };
 		C07413B05F2A3CD997EBCE9D8EE5FD08 /* Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF92C1BB679FEC01388C715AB35D849A /* Compression.swift */; };
 		C2809B4763602D15A7384398343AE406 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC791E0ECF4BC36821CA8EC27820CB5 /* Transport.swift */; };
+		C63A684AD1CC053BF500EA6C40729E3F /* TSAVideoCallSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579384353B1756A1841974F3C2C80464 /* TSAVideoCallSocket.swift */; };
 		C808D0298CC1CD6C13E283663535B259 /* WebSocketServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3DC8F5A1485473703BDFB6A92979D89 /* WebSocketServer.swift */; };
 		CCDFE079D2DA1E51162E69A3A28BF23F /* NativeEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C5323BCCFD82ADDE4070FC0DF1E8C53 /* NativeEngine.swift */; };
+		CFA4B545509BD6F0C54513149D7367B1 /* RTCSessionDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005588FBB565A63AEC2AC8256DB8638E /* RTCSessionDescription.swift */; };
 		DA25193E27ABCAC731A9549A566C5FDB /* FoundationHTTPHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207268EA92178A30C9D5BF13000E956D /* FoundationHTTPHandler.swift */; };
 		EC841D45EAC2D9B3816AD40FE96F7F97 /* Pods-TSAVideoCallSDKHB-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D79E4E4FDBC5DBACBFCD49BAB05E946 /* Pods-TSAVideoCallSDKHB-dummy.m */; };
-		F2C427E95A28F748542900DBEB19F9E7 /* TSAVideoCallVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CDA2A4C7BABC16295D47ECBD41B5E0 /* TSAVideoCallVideoView.swift */; };
 		F4D86DAACC44D52F4580AD0721D10459 /* Security.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0FC387EC01CC6DE9D5A311D66D88F22 /* Security.swift */; };
-		F5DBC2DDC58C15A2DC323112FE7D341A /* TSAVideoCallTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077286FFC2A5A59ECDEB1C2E032C7259 /* TSAVideoCallTransaction.swift */; };
-		F69BB7092CA095472310BA34F9EA16AB /* TSAVideoCallMediaControllersDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B638F8DA6DD9CAFA834FEF07FCCA28A /* TSAVideoCallMediaControllersDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,39 +105,40 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		005588FBB565A63AEC2AC8256DB8638E /* RTCSessionDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RTCSessionDescription.swift; path = TSAVideoCallSDK/RTCSessionDescription.swift; sourceTree = "<group>"; };
 		0304CE8A4572F1183B895CDAFAA538BE /* RTCVideoCodecH264.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoCodecH264.h; path = WebRTC.framework/Headers/RTCVideoCodecH264.h; sourceTree = "<group>"; };
 		050D091CD58AB892336D06519DAA820B /* WebRTC.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WebRTC.h; path = WebRTC.framework/Headers/WebRTC.h; sourceTree = "<group>"; };
 		06DAC996B8C09CBE848523191537B43B /* RTCVideoDecoderVP8.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoDecoderVP8.h; path = WebRTC.framework/Headers/RTCVideoDecoderVP8.h; sourceTree = "<group>"; };
-		077286FFC2A5A59ECDEB1C2E032C7259 /* TSAVideoCallTransaction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallTransaction.swift; path = TSAVideoCallSDK/TSAVideoCallTransaction.swift; sourceTree = "<group>"; };
-		07CA210EEB74E830D1DBAA40EF7A79B6 /* RTCSessionDescription.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RTCSessionDescription.swift; path = TSAVideoCallSDK/RTCSessionDescription.swift; sourceTree = "<group>"; };
 		08F41AF932C5F7140069A4C060E7A016 /* FrameCollector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FrameCollector.swift; path = Sources/Framer/FrameCollector.swift; sourceTree = "<group>"; };
 		09011D5CBBC8CD33F1AD4F8734E0080A /* StringHTTPHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringHTTPHandler.swift; path = Sources/Framer/StringHTTPHandler.swift; sourceTree = "<group>"; };
-		0B076CC1AF49C7E078A323A575D43A14 /* TSAVideoCallHandle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallHandle.swift; path = TSAVideoCallSDK/TSAVideoCallHandle.swift; sourceTree = "<group>"; };
-		0D572C64BF2CA345D116562D08DEF064 /* TSAVideoCallSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TSAVideoCallSDK.debug.xcconfig; sourceTree = "<group>"; };
+		0B73E8C6C6F392A6D6D3F37B814325E1 /* TSAVideoCallSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TSAVideoCallSDK-dummy.m"; sourceTree = "<group>"; };
 		0D79E4E4FDBC5DBACBFCD49BAB05E946 /* Pods-TSAVideoCallSDKHB-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TSAVideoCallSDKHB-dummy.m"; sourceTree = "<group>"; };
+		10169D2B695664B8DBD9BF641CA3FFD2 /* TSAVideoCallSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TSAVideoCallSDK-prefix.pch"; sourceTree = "<group>"; };
 		16CF177320EB118BC8E3134AD73DF639 /* RTCRtpParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpParameters.h; path = WebRTC.framework/Headers/RTCRtpParameters.h; sourceTree = "<group>"; };
 		177B1EE414B722007F77A3EA200B89BF /* RTCRtpReceiver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpReceiver.h; path = WebRTC.framework/Headers/RTCRtpReceiver.h; sourceTree = "<group>"; };
 		1869ABE0894C1A37A292BA5A77E39881 /* WSEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WSEngine.swift; path = Sources/Engine/WSEngine.swift; sourceTree = "<group>"; };
 		186DF4F5C907FB3F5358CE7A8F0DE9E2 /* RTCMediaConstraints.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMediaConstraints.h; path = WebRTC.framework/Headers/RTCMediaConstraints.h; sourceTree = "<group>"; };
+		18EDA8EDF0098759E1B6DCF99E1A5888 /* TSAVideoCallHandle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallHandle.swift; path = TSAVideoCallSDK/TSAVideoCallHandle.swift; sourceTree = "<group>"; };
 		1A1BB689F63E24652957A754E4186179 /* FoundationTransport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationTransport.swift; path = Sources/Transport/FoundationTransport.swift; sourceTree = "<group>"; };
 		1AE4A41A7A9DF0474F512E82377E0FD3 /* RTCMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMacros.h; path = WebRTC.framework/Headers/RTCMacros.h; sourceTree = "<group>"; };
 		1B95D7A613C79855CAF5AF949745B5B4 /* RTCDispatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCDispatcher.h; path = WebRTC.framework/Headers/RTCDispatcher.h; sourceTree = "<group>"; };
+		1CE6C013871B440C6F29E04DA53B3D3C /* TSAVideoCallSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TSAVideoCallSDK.release.xcconfig; sourceTree = "<group>"; };
 		1E9A736F8C0CA3807D98ADE8DA22A634 /* RTCMetricsSampleInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMetricsSampleInfo.h; path = WebRTC.framework/Headers/RTCMetricsSampleInfo.h; sourceTree = "<group>"; };
 		204E5876DAC12DF6D94CEB33ACDB6E50 /* Pods-TSAVideoCallSDKHB-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TSAVideoCallSDKHB-Info.plist"; sourceTree = "<group>"; };
 		207268EA92178A30C9D5BF13000E956D /* FoundationHTTPHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationHTTPHandler.swift; path = Sources/Framer/FoundationHTTPHandler.swift; sourceTree = "<group>"; };
 		26169AA00487B8A1614A70C08D3C32BA /* Pods-TSAVideoCallSDKHB-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TSAVideoCallSDKHB-resources.sh"; sourceTree = "<group>"; };
 		261F4F973C2D7BE3875F62EF42E94515 /* Starscream.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Starscream.release.xcconfig; sourceTree = "<group>"; };
-		2912EF91F5C9653BF3506AD397C4CC50 /* TSAVideoCallSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TSAVideoCallSDK-dummy.m"; sourceTree = "<group>"; };
 		2AA47D704811ABC56308EA8ED8C7D158 /* TCPTransport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TCPTransport.swift; path = Sources/Transport/TCPTransport.swift; sourceTree = "<group>"; };
 		3090703429CCB7FF52BE38B1E73256A5 /* RTCMediaStreamTrack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMediaStreamTrack.h; path = WebRTC.framework/Headers/RTCMediaStreamTrack.h; sourceTree = "<group>"; };
 		31138178E23D488B0D8E2B4D26F1FCDB /* Pods-TSAVideoCallSDKHB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TSAVideoCallSDKHB.release.xcconfig"; sourceTree = "<group>"; };
+		331E723AFBE72AB443ED7C71812565BE /* ResourceBundle-TSAVideoCallResources-TSAVideoCallSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-TSAVideoCallResources-TSAVideoCallSDK-Info.plist"; sourceTree = "<group>"; };
 		33CFD2610AF2E034B19ECD63FCE0567E /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
 		33EC97885F16A34D570B0B524E004ECF /* RTCCameraVideoCapturer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCCameraVideoCapturer.h; path = WebRTC.framework/Headers/RTCCameraVideoCapturer.h; sourceTree = "<group>"; };
-		35C389D0D59CC3EFA7561CC3DFE6F91C /* TSAVideoCallSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TSAVideoCallSDK.release.xcconfig; sourceTree = "<group>"; };
 		36406C3B28496C82A5CD1BE5BDF1FE5F /* RTCVideoFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoFrame.h; path = WebRTC.framework/Headers/RTCVideoFrame.h; sourceTree = "<group>"; };
 		369A9BE2D56AA49B77B014F16D9A15B9 /* RTCEAGLVideoView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCEAGLVideoView.h; path = WebRTC.framework/Headers/RTCEAGLVideoView.h; sourceTree = "<group>"; };
 		41DAEED0A65E8A340E35EDEE81466B28 /* RTCVideoRenderer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoRenderer.h; path = WebRTC.framework/Headers/RTCVideoRenderer.h; sourceTree = "<group>"; };
 		420E4D68BB1A6424651522A8C90A4EFB /* UIDevice+RTCDevice.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIDevice+RTCDevice.h"; path = "WebRTC.framework/Headers/UIDevice+RTCDevice.h"; sourceTree = "<group>"; };
+		42482109147A5A71E080A41A6CDBA5EB /* TSAVideoCallTransaction.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallTransaction.swift; path = TSAVideoCallSDK/TSAVideoCallTransaction.swift; sourceTree = "<group>"; };
 		46311306784BECD9729F80B668BD9AF7 /* Pods-TSAVideoCallSDKHB-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TSAVideoCallSDKHB-umbrella.h"; sourceTree = "<group>"; };
 		47BC0C5823783FCBC38D957E286524BB /* RTCVideoCodecFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoCodecFactory.h; path = WebRTC.framework/Headers/RTCVideoCodecFactory.h; sourceTree = "<group>"; };
 		47FD199B38F2C52B76C0F39642965420 /* Starscream-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Starscream-Info.plist"; sourceTree = "<group>"; };
@@ -145,25 +146,26 @@
 		51EACBBCA8313B3918265217A4843D48 /* RTCSSLAdapter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCSSLAdapter.h; path = WebRTC.framework/Headers/RTCSSLAdapter.h; sourceTree = "<group>"; };
 		521C05C760E3F47B0158343E764F87F4 /* RTCIntervalRange.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCIntervalRange.h; path = WebRTC.framework/Headers/RTCIntervalRange.h; sourceTree = "<group>"; };
 		549AE9EE9A9C19369C11BBA09F510DE9 /* RTCMetrics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMetrics.h; path = WebRTC.framework/Headers/RTCMetrics.h; sourceTree = "<group>"; };
+		579384353B1756A1841974F3C2C80464 /* TSAVideoCallSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallSocket.swift; path = TSAVideoCallSDK/TSAVideoCallSocket.swift; sourceTree = "<group>"; };
 		58D403E0C1E2B9C2697CE1D14E233521 /* RTCVideoEncoderVP9.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoEncoderVP9.h; path = WebRTC.framework/Headers/RTCVideoEncoderVP9.h; sourceTree = "<group>"; };
 		5D93AA614FE4EE9F04C26EA9EEA0A162 /* RTCMTLVideoView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMTLVideoView.h; path = WebRTC.framework/Headers/RTCMTLVideoView.h; sourceTree = "<group>"; };
 		5F1BF6D64D836612B2150AC8730FDBD4 /* RTCAudioTrack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCAudioTrack.h; path = WebRTC.framework/Headers/RTCAudioTrack.h; sourceTree = "<group>"; };
 		6387F2778497A9B63DF6B13A5F3DA5C1 /* Starscream-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-umbrella.h"; sourceTree = "<group>"; };
 		6A302FE055D0D25A19EFE58C86D689AA /* RTCMediaSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMediaSource.h; path = WebRTC.framework/Headers/RTCMediaSource.h; sourceTree = "<group>"; };
-		6B638F8DA6DD9CAFA834FEF07FCCA28A /* TSAVideoCallMediaControllersDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallMediaControllersDelegate.swift; path = TSAVideoCallSDK/TSAVideoCallMediaControllersDelegate.swift; sourceTree = "<group>"; };
 		70423E092DCFCAFA0C459E6B2AF32FB1 /* RTCVideoTrack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoTrack.h; path = WebRTC.framework/Headers/RTCVideoTrack.h; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		77D931474454FCC1114817A78BB7CCC7 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = TSAVideoCallResources/Assets.xcassets; sourceTree = "<group>"; };
 		7937344491C7414B1F3CD1CF69BD8DC8 /* RTCAudioSessionConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCAudioSessionConfiguration.h; path = WebRTC.framework/Headers/RTCAudioSessionConfiguration.h; sourceTree = "<group>"; };
 		7B85981203E11AA4337FD08997429044 /* RTCVideoDecoderVP9.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoDecoderVP9.h; path = WebRTC.framework/Headers/RTCVideoDecoderVP9.h; sourceTree = "<group>"; };
-		7C3EBA062C045D14EA65CD2E850C2DEF /* TSAVideoCallSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallSocket.swift; path = TSAVideoCallSDK/TSAVideoCallSocket.swift; sourceTree = "<group>"; };
 		7E368044F219202C558F5E09F4F9F47C /* Server.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Server.swift; path = Sources/Server/Server.swift; sourceTree = "<group>"; };
 		8608A8D08A94A4470447743A91F043F8 /* Engine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Engine.swift; path = Sources/Engine/Engine.swift; sourceTree = "<group>"; };
 		8629F185A1DECAAD43E89756F65E5867 /* RTCFileLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCFileLogger.h; path = WebRTC.framework/Headers/RTCFileLogger.h; sourceTree = "<group>"; };
 		891B2270823847ED23F2ECFC28F935EC /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Starscream.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C7B03376F2A1696CB03B1F2D0E4BAED /* WebRTC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WebRTC.debug.xcconfig; sourceTree = "<group>"; };
 		8D7C23EE4AC5B0111A985B38EB314A36 /* WSCompression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WSCompression.swift; path = Sources/Compression/WSCompression.swift; sourceTree = "<group>"; };
+		8E06FA8F7D82F25A532CB9B297751665 /* TSAVideoCallSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TSAVideoCallSDK-umbrella.h"; sourceTree = "<group>"; };
 		8EC791E0ECF4BC36821CA8EC27820CB5 /* Transport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transport.swift; path = Sources/Transport/Transport.swift; sourceTree = "<group>"; };
-		92D36D90E991B468792ADAF0638EE9B8 /* ResourceBundle-TSAVideoCallResources-TSAVideoCallSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-TSAVideoCallResources-TSAVideoCallSDK-Info.plist"; sourceTree = "<group>"; };
+		941C47F04927697660C90FC2DEE41743 /* TSAVideoCallSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TSAVideoCallSDK.modulemap; sourceTree = "<group>"; };
 		942FA8E6C423DF385A1CFA5484FF50F3 /* RTCAudioSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCAudioSource.h; path = WebRTC.framework/Headers/RTCAudioSource.h; sourceTree = "<group>"; };
 		99C95934D917B19FEF98834A8C249AF8 /* RTCDataChannelConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCDataChannelConfiguration.h; path = WebRTC.framework/Headers/RTCDataChannelConfiguration.h; sourceTree = "<group>"; };
 		99F9E6C16355AD5C3F4DDD6C5348DE72 /* FoundationSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationSecurity.swift; path = Sources/Security/FoundationSecurity.swift; sourceTree = "<group>"; };
@@ -172,21 +174,19 @@
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1651C892D6B1FCD60EA937B0F73D0B3 /* RTCMediaStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCMediaStream.h; path = WebRTC.framework/Headers/RTCMediaStream.h; sourceTree = "<group>"; };
 		A7FCCCDF843CD2686966994D1F2D404C /* Starscream.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Starscream.debug.xcconfig; sourceTree = "<group>"; };
-		A8CDA2A4C7BABC16295D47ECBD41B5E0 /* TSAVideoCallVideoView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallVideoView.swift; path = TSAVideoCallSDK/TSAVideoCallVideoView.swift; sourceTree = "<group>"; };
-		A9E3F9EC18667194234E9065B1897DE2 /* TSAVideoCallConnection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallConnection.swift; path = TSAVideoCallSDK/TSAVideoCallConnection.swift; sourceTree = "<group>"; };
 		AC2BB1636BDE77496665FB4FFC42425C /* RTCAVFoundationVideoSource.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCAVFoundationVideoSource.h; path = WebRTC.framework/Headers/RTCAVFoundationVideoSource.h; sourceTree = "<group>"; };
 		AFACDD1A33E4E33D0C426FB205DF6F37 /* Pods-TSAVideoCallSDKHB.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TSAVideoCallSDKHB.modulemap"; sourceTree = "<group>"; };
 		B27FCD419FE41E98BEAA6703D2292456 /* TSAVideoCallResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TSAVideoCallResources.bundle; path = "TSAVideoCallSDK-TSAVideoCallResources.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E8DDC73B76588EF4297C2BF8F292BB /* RTCRtpCodecParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpCodecParameters.h; path = WebRTC.framework/Headers/RTCRtpCodecParameters.h; sourceTree = "<group>"; };
+		B5EFFF010C5DDD1F4BB94D92BD6B086B /* TSAVideoCallConnection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallConnection.swift; path = TSAVideoCallSDK/TSAVideoCallConnection.swift; sourceTree = "<group>"; };
+		B7F7C6E7B9BD97B9FF4CBAFE60B386A7 /* TSAVideoCallSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TSAVideoCallSDK-Info.plist"; sourceTree = "<group>"; };
 		B942B76AC7EBF83E9BDC6B10670918C4 /* Starscream-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-prefix.pch"; sourceTree = "<group>"; };
 		BA03C1B02ACF92B13D2C158A094D3E19 /* WebSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = Sources/Starscream/WebSocket.swift; sourceTree = "<group>"; };
 		BA3529F08430CF1446A40F1A662C3ADF /* RTCAudioSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCAudioSession.h; path = WebRTC.framework/Headers/RTCAudioSession.h; sourceTree = "<group>"; };
 		BC3262CDD0EED8AF3D2BFF0720822959 /* Pods-TSAVideoCallSDKHB-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TSAVideoCallSDKHB-acknowledgements.plist"; sourceTree = "<group>"; };
-		BC3608C1E85D7D83272CB2BB6DDAD7CC /* TSAVideoCallMediaControllers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallMediaControllers.swift; path = TSAVideoCallSDK/TSAVideoCallMediaControllers.swift; sourceTree = "<group>"; };
 		BD4D3F4BFA230DDBE364A61D7449A8E9 /* RTCLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCLogging.h; path = WebRTC.framework/Headers/RTCLogging.h; sourceTree = "<group>"; };
 		BD8605F642974F0BD40EE2C71D3FFA4F /* RTCPeerConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCPeerConnection.h; path = WebRTC.framework/Headers/RTCPeerConnection.h; sourceTree = "<group>"; };
 		BDF6EEAD3668418F819B9A66EE341338 /* RTCVideoViewShading.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoViewShading.h; path = WebRTC.framework/Headers/RTCVideoViewShading.h; sourceTree = "<group>"; };
-		BFD5933BA6BD9BF4F4DCFF30628F2044 /* TSAVideoCallSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TSAVideoCallSDK-umbrella.h"; sourceTree = "<group>"; };
 		C2F80763889D5558AB0263F2D573998D /* RTCCameraPreviewView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCCameraPreviewView.h; path = WebRTC.framework/Headers/RTCCameraPreviewView.h; sourceTree = "<group>"; };
 		C313A25347AF34EA48011F5A39F7E3F4 /* RTCConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCConfiguration.h; path = WebRTC.framework/Headers/RTCConfiguration.h; sourceTree = "<group>"; };
 		C3DC8F5A1485473703BDFB6A92979D89 /* WebSocketServer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocketServer.swift; path = Sources/Server/WebSocketServer.swift; sourceTree = "<group>"; };
@@ -195,15 +195,15 @@
 		CAFABDFD45F0C58EE2BA43E7F1154166 /* RTCTracing.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCTracing.h; path = WebRTC.framework/Headers/RTCTracing.h; sourceTree = "<group>"; };
 		CC6D8F5F20D4419E97B7C2FE40C27908 /* FoundationHTTPServerHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FoundationHTTPServerHandler.swift; path = Sources/Framer/FoundationHTTPServerHandler.swift; sourceTree = "<group>"; };
 		CFDB544D80AA06FB1A087F04F4674322 /* Pods-TSAVideoCallSDKHB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TSAVideoCallSDKHB.debug.xcconfig"; sourceTree = "<group>"; };
-		CFDD6A4BF9939B8FCBC076E0F0DCB67F /* TSAVideoCallSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = TSAVideoCallSDK.modulemap; sourceTree = "<group>"; };
 		D0FC387EC01CC6DE9D5A311D66D88F22 /* Security.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Security.swift; path = Sources/Security/Security.swift; sourceTree = "<group>"; };
 		D174718AA36233BBCF705A15E186ECA3 /* RTCVideoCodec.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoCodec.h; path = WebRTC.framework/Headers/RTCVideoCodec.h; sourceTree = "<group>"; };
 		D3A295EDC88141A38760CFA2FDFF5248 /* RTCRtpEncodingParameters.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpEncodingParameters.h; path = WebRTC.framework/Headers/RTCRtpEncodingParameters.h; sourceTree = "<group>"; };
+		D8788011870E49C0270AB6C03DD282A1 /* TSAVideoCallView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallView.swift; path = TSAVideoCallSDK/TSAVideoCallView.swift; sourceTree = "<group>"; };
 		DA413E7ACA77135ED106F32EAAE93C88 /* RTCIceServer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCIceServer.h; path = WebRTC.framework/Headers/RTCIceServer.h; sourceTree = "<group>"; };
+		DD913223A86B79263C4EF1C6458B2CCC /* TSAVideoCallMediaControllersDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallMediaControllersDelegate.swift; path = TSAVideoCallSDK/TSAVideoCallMediaControllersDelegate.swift; sourceTree = "<group>"; };
 		DDDDB95D61348EAEFD1054A3FCF35F81 /* Starscream.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Starscream.modulemap; sourceTree = "<group>"; };
 		DF92C1BB679FEC01388C715AB35D849A /* Compression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Compression.swift; path = Sources/Compression/Compression.swift; sourceTree = "<group>"; };
 		E0281E0A437FBBE4A4B7B2C854D80DCD /* WebRTC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WebRTC.release.xcconfig; sourceTree = "<group>"; };
-		E48D772697E0A056BF38B7151656D687 /* TSAVideoCallSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "TSAVideoCallSDK-Info.plist"; sourceTree = "<group>"; };
 		E5F87FDBD667145BA0579C92BDF8B65A /* RTCIceCandidate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCIceCandidate.h; path = WebRTC.framework/Headers/RTCIceCandidate.h; sourceTree = "<group>"; };
 		E6BADA55B7257A593D60E23E049053B2 /* RTCVideoCapturer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoCapturer.h; path = WebRTC.framework/Headers/RTCVideoCapturer.h; sourceTree = "<group>"; };
 		E96003082FBEBDB42C94B06D779B6467 /* RTCRtpSender.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCRtpSender.h; path = WebRTC.framework/Headers/RTCRtpSender.h; sourceTree = "<group>"; };
@@ -212,14 +212,14 @@
 		F2987CB11B73874FFB96AECB5CC5EB09 /* Data+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+Extensions.swift"; path = "Sources/DataBytes/Data+Extensions.swift"; sourceTree = "<group>"; };
 		F2DC0579F2B910FD7CE97A9404462521 /* Starscream-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Starscream-dummy.m"; sourceTree = "<group>"; };
 		F463D3E9FCDA42A7AA25ECFABD23FCAE /* RTCFieldTrials.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCFieldTrials.h; path = WebRTC.framework/Headers/RTCFieldTrials.h; sourceTree = "<group>"; };
-		F49028077A770DC0B3ECD1C82CDB2851 /* TSAVideoCallSDK-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TSAVideoCallSDK-prefix.pch"; sourceTree = "<group>"; };
 		F53676291161677D91E0B9146A57140E /* Pods-TSAVideoCallSDKHB-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TSAVideoCallSDKHB-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F718FC68CE06D466B91BDA6F8258F5ED /* HTTPHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHandler.swift; path = Sources/Framer/HTTPHandler.swift; sourceTree = "<group>"; };
+		F913911246C6162A205F93C30893630E /* TSAVideoCallMediaControllers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSAVideoCallMediaControllers.swift; path = TSAVideoCallSDK/TSAVideoCallMediaControllers.swift; sourceTree = "<group>"; };
 		F9972378BA80B2EAF6BD382B0E888F12 /* RTCLegacyStatsReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCLegacyStatsReport.h; path = WebRTC.framework/Headers/RTCLegacyStatsReport.h; sourceTree = "<group>"; };
 		F9AEEC0DAABB5A1C9CB814923EFC0B02 /* RTCPeerConnectionFactory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCPeerConnectionFactory.h; path = WebRTC.framework/Headers/RTCPeerConnectionFactory.h; sourceTree = "<group>"; };
 		FC5A604A17CA20DE59D28AB55258FD4D /* RTCVideoFrameBuffer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RTCVideoFrameBuffer.h; path = WebRTC.framework/Headers/RTCVideoFrameBuffer.h; sourceTree = "<group>"; };
 		FF80B4F7A5889B1A6132AADC02A3299F /* Framer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Framer.swift; path = Sources/Framer/Framer.swift; sourceTree = "<group>"; };
-		FFF18CAC905DF54CFBB12FACF39E3815 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = TSAVideoCallResources/Assets.xcassets; sourceTree = "<group>"; };
+		FFD8FA43C18129DB7BCF57649D6C5D65 /* TSAVideoCallSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TSAVideoCallSDK.debug.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,14 +292,6 @@
 			path = "../Target Support Files/WebRTC";
 			sourceTree = "<group>";
 		};
-		4BAEB822E8B9AAB3C692DC883A5D4679 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				FFF18CAC905DF54CFBB12FACF39E3815 /* Assets.xcassets */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,38 +329,28 @@
 			path = Starscream;
 			sourceTree = "<group>";
 		};
-		5F5A0BBD3A9F66899B2243A66D348560 /* Support Files */ = {
+		5FC8F4C3243803B62828CF1457B96D25 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				92D36D90E991B468792ADAF0638EE9B8 /* ResourceBundle-TSAVideoCallResources-TSAVideoCallSDK-Info.plist */,
-				CFDD6A4BF9939B8FCBC076E0F0DCB67F /* TSAVideoCallSDK.modulemap */,
-				2912EF91F5C9653BF3506AD397C4CC50 /* TSAVideoCallSDK-dummy.m */,
-				E48D772697E0A056BF38B7151656D687 /* TSAVideoCallSDK-Info.plist */,
-				F49028077A770DC0B3ECD1C82CDB2851 /* TSAVideoCallSDK-prefix.pch */,
-				BFD5933BA6BD9BF4F4DCFF30628F2044 /* TSAVideoCallSDK-umbrella.h */,
-				0D572C64BF2CA345D116562D08DEF064 /* TSAVideoCallSDK.debug.xcconfig */,
-				35C389D0D59CC3EFA7561CC3DFE6F91C /* TSAVideoCallSDK.release.xcconfig */,
+				331E723AFBE72AB443ED7C71812565BE /* ResourceBundle-TSAVideoCallResources-TSAVideoCallSDK-Info.plist */,
+				941C47F04927697660C90FC2DEE41743 /* TSAVideoCallSDK.modulemap */,
+				0B73E8C6C6F392A6D6D3F37B814325E1 /* TSAVideoCallSDK-dummy.m */,
+				B7F7C6E7B9BD97B9FF4CBAFE60B386A7 /* TSAVideoCallSDK-Info.plist */,
+				10169D2B695664B8DBD9BF641CA3FFD2 /* TSAVideoCallSDK-prefix.pch */,
+				8E06FA8F7D82F25A532CB9B297751665 /* TSAVideoCallSDK-umbrella.h */,
+				FFD8FA43C18129DB7BCF57649D6C5D65 /* TSAVideoCallSDK.debug.xcconfig */,
+				1CE6C013871B440C6F29E04DA53B3D3C /* TSAVideoCallSDK.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/TSAVideoCallSDK";
 			sourceTree = "<group>";
 		};
-		8018EC1B300B12B0882C6FEE60CE07FF /* TSAVideoCallSDK */ = {
+		8010EA6DDFCF43E086D7782A0F12D20C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				07CA210EEB74E830D1DBAA40EF7A79B6 /* RTCSessionDescription.swift */,
-				A9E3F9EC18667194234E9065B1897DE2 /* TSAVideoCallConnection.swift */,
-				0B076CC1AF49C7E078A323A575D43A14 /* TSAVideoCallHandle.swift */,
-				BC3608C1E85D7D83272CB2BB6DDAD7CC /* TSAVideoCallMediaControllers.swift */,
-				6B638F8DA6DD9CAFA834FEF07FCCA28A /* TSAVideoCallMediaControllersDelegate.swift */,
-				7C3EBA062C045D14EA65CD2E850C2DEF /* TSAVideoCallSocket.swift */,
-				077286FFC2A5A59ECDEB1C2E032C7259 /* TSAVideoCallTransaction.swift */,
-				A8CDA2A4C7BABC16295D47ECBD41B5E0 /* TSAVideoCallVideoView.swift */,
-				4BAEB822E8B9AAB3C692DC883A5D4679 /* Resources */,
-				5F5A0BBD3A9F66899B2243A66D348560 /* Support Files */,
+				77D931474454FCC1114817A78BB7CCC7 /* Assets.xcassets */,
 			);
-			name = TSAVideoCallSDK;
-			path = TSAVideoCallSDK;
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		8A061CF30336C1497E4FB40E357136BE /* Products */ = {
@@ -445,6 +427,24 @@
 			path = WebRTC;
 			sourceTree = "<group>";
 		};
+		ACF902AFC45A86404C941A99B0254727 /* TSAVideoCallSDK */ = {
+			isa = PBXGroup;
+			children = (
+				005588FBB565A63AEC2AC8256DB8638E /* RTCSessionDescription.swift */,
+				B5EFFF010C5DDD1F4BB94D92BD6B086B /* TSAVideoCallConnection.swift */,
+				18EDA8EDF0098759E1B6DCF99E1A5888 /* TSAVideoCallHandle.swift */,
+				F913911246C6162A205F93C30893630E /* TSAVideoCallMediaControllers.swift */,
+				DD913223A86B79263C4EF1C6458B2CCC /* TSAVideoCallMediaControllersDelegate.swift */,
+				579384353B1756A1841974F3C2C80464 /* TSAVideoCallSocket.swift */,
+				42482109147A5A71E080A41A6CDBA5EB /* TSAVideoCallTransaction.swift */,
+				D8788011870E49C0270AB6C03DD282A1 /* TSAVideoCallView.swift */,
+				8010EA6DDFCF43E086D7782A0F12D20C /* Resources */,
+				5FC8F4C3243803B62828CF1457B96D25 /* Support Files */,
+			);
+			name = TSAVideoCallSDK;
+			path = TSAVideoCallSDK;
+			sourceTree = "<group>";
+		};
 		B92B9FEBD177CD0E1D298F59940EE1E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,7 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				5CF79982B098C8A22E1DE5626A5A01CE /* Starscream */,
-				8018EC1B300B12B0882C6FEE60CE07FF /* TSAVideoCallSDK */,
+				ACF902AFC45A86404C941A99B0254727 /* TSAVideoCallSDK */,
 				8FCCAD623FAC7458357FEBF0B07513DC /* WebRTC */,
 			);
 			name = Pods;
@@ -588,7 +588,7 @@
 			buildConfigurationList = 8D55618B06AE0AC7B4B7C6B9EA3EA686 /* Build configuration list for PBXNativeTarget "TSAVideoCallSDK" */;
 			buildPhases = (
 				D57AFBFD9C9BEE11DC83B7C8CC463F7F /* Headers */,
-				E45A93A75340516CE782F1DE1AAFB682 /* Sources */,
+				5D851E13517AAF3C4362E60D4C531CBD /* Sources */,
 				231B9F3C175ECA567188EEC0A3BD24E8 /* Frameworks */,
 				59FC954BA584DC52D72F8FECF9C66189 /* Resources */,
 			);
@@ -668,6 +668,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5D851E13517AAF3C4362E60D4C531CBD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CFA4B545509BD6F0C54513149D7367B1 /* RTCSessionDescription.swift in Sources */,
+				845C904E166A73DABFE43B70151A336D /* TSAVideoCallConnection.swift in Sources */,
+				434D21E531C9DEB93D0754729F43B5CD /* TSAVideoCallHandle.swift in Sources */,
+				614DF5F693CC7AEFD88ECFFE9046E105 /* TSAVideoCallMediaControllers.swift in Sources */,
+				BBF3CB284073A16FC52B05A93CEA854C /* TSAVideoCallMediaControllersDelegate.swift in Sources */,
+				A571923F632241036C304C0DF9F055EE /* TSAVideoCallSDK-dummy.m in Sources */,
+				C63A684AD1CC053BF500EA6C40729E3F /* TSAVideoCallSocket.swift in Sources */,
+				0108209C66E8A7445D23E8F941551E88 /* TSAVideoCallTransaction.swift in Sources */,
+				ACF64188257D98425F3FDCD1D45FC72B /* TSAVideoCallView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		710E0DD68DEF0457E00E431EAC819C67 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -680,22 +696,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E45A93A75340516CE782F1DE1AAFB682 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				918687013F9FF8D126C3CAB3C779A02E /* RTCSessionDescription.swift in Sources */,
-				255C1452071CCC6FCC641C350C007263 /* TSAVideoCallConnection.swift in Sources */,
-				65F469B66A56AAD74491CC91CD4D4A1B /* TSAVideoCallHandle.swift in Sources */,
-				9EFE6A0D5B8B71733BBD9E5CC45AD78F /* TSAVideoCallMediaControllers.swift in Sources */,
-				F69BB7092CA095472310BA34F9EA16AB /* TSAVideoCallMediaControllersDelegate.swift in Sources */,
-				13712892C0966964E8FDAFE801DE5876 /* TSAVideoCallSDK-dummy.m in Sources */,
-				B037CBBCF28B1C3C770D4B06DA8E49CB /* TSAVideoCallSocket.swift in Sources */,
-				F5DBC2DDC58C15A2DC323112FE7D341A /* TSAVideoCallTransaction.swift in Sources */,
-				F2C427E95A28F748542900DBEB19F9E7 /* TSAVideoCallVideoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,7 +862,7 @@
 		};
 		205E8D56C697AB357CE148464240249D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35C389D0D59CC3EFA7561CC3DFE6F91C /* TSAVideoCallSDK.release.xcconfig */;
+			baseConfigurationReference = 1CE6C013871B440C6F29E04DA53B3D3C /* TSAVideoCallSDK.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TSAVideoCallSDK";
 				IBSC_MODULE = TSAVideoCallSDK;
@@ -878,7 +878,7 @@
 		};
 		4C6A39817D492D0358DCF1C7C07C0DDE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 35C389D0D59CC3EFA7561CC3DFE6F91C /* TSAVideoCallSDK.release.xcconfig */;
+			baseConfigurationReference = 1CE6C013871B440C6F29E04DA53B3D3C /* TSAVideoCallSDK.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -950,7 +950,7 @@
 		};
 		63D1CA0E29AC8E35BBD0CB3FC1739B4D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D572C64BF2CA345D116562D08DEF064 /* TSAVideoCallSDK.debug.xcconfig */;
+			baseConfigurationReference = FFD8FA43C18129DB7BCF57649D6C5D65 /* TSAVideoCallSDK.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1099,7 +1099,7 @@
 		};
 		A2053A23F13C4DDFA0628B206CE0F77A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D572C64BF2CA345D116562D08DEF064 /* TSAVideoCallSDK.debug.xcconfig */;
+			baseConfigurationReference = FFD8FA43C18129DB7BCF57649D6C5D65 /* TSAVideoCallSDK.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TSAVideoCallSDK";
 				IBSC_MODULE = TSAVideoCallSDK;

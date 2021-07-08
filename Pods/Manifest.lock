@@ -1,35 +1,24 @@
 PODS:
   - Starscream (4.0.4)
-  - TSAVideoCallSDK (0.0.1):
+  - TSAVideoCallSDK (0.0.2):
     - Starscream (~> 4.0.0)
     - WebRTC
   - WebRTC (63.11.20455)
 
 DEPENDENCIES:
-  - TSAVideoCallSDK (from `https://github.com/smpb05/TSAVideoCallSDK.git`, branch `main`, tag `0.0.1`)
+  - TSAVideoCallSDK (~> 0.0.2)
 
 SPEC REPOS:
   trunk:
     - Starscream
+    - TSAVideoCallSDK
     - WebRTC
-
-EXTERNAL SOURCES:
-  TSAVideoCallSDK:
-    :branch: main
-    :git: https://github.com/smpb05/TSAVideoCallSDK.git
-    :tag: 0.0.1
-
-CHECKOUT OPTIONS:
-  TSAVideoCallSDK:
-    :commit: b549ae670cd58311472dc310f3f4324dd41190a3
-    :git: https://github.com/smpb05/TSAVideoCallSDK.git
-    :tag: 0.0.1
 
 SPEC CHECKSUMS:
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  TSAVideoCallSDK: 8af1b04fecc56f05088575e39d3c551eeadbb407
+  TSAVideoCallSDK: 9ac27da6d16230f98383b168b9cac0d8b7f0d80f
   WebRTC: f2a6203584745fe53532633397557876b5d71640
 
-PODFILE CHECKSUM: 702ba1319d75d0b5ad4c3c73fa14db5cac6ff633
+PODFILE CHECKSUM: 77fe3879cc2dda9865324d9e95c2289f1fa0d1ec
 
 COCOAPODS: 1.10.1

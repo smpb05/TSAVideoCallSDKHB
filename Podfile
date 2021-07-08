@@ -6,7 +6,7 @@ target 'TSAVideoCallSDKHB' do
   use_frameworks!
 
   # Pods for TSAVideoCallSDKHB
-  pod 'TSAVideoCallSDK', :git => 'https://github.com/smpb05/TSAVideoCallSDK.git', :branch => 'main', :tag => '0.0.1'
+  pod 'TSAVideoCallSDK', '~> 0.0.2'
   
 
 end

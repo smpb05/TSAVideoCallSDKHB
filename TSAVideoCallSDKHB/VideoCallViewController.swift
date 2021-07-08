@@ -8,7 +8,7 @@
 import UIKit
 class VideoCallViewController: UIViewController, TSAVideoCallSessionDelegate, TSAVideoCallPublisherDelegate, TSAVideoCallSubscriberDelegate  {
     
-    // subscriber
+    // subscriber-
     func onConnected(subscriber: TSAVideoCallSubscriber) {
         print("subscriber connected")
     }

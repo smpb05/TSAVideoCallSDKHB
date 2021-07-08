@@ -1,8 +1,8 @@
 //
-//  TSAVideoCallVideoView.swift
+//  TSAVideoCallView.swift
 //  TSAVideoCallSDK
 //
-//  Created by smartex on 02.07.2021.
+//  Created by smartex on 08.07.2021.
 //
 
 import Foundation
