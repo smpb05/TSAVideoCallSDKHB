@@ -122,7 +122,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     
     var apiUrl: String
     var roomId: NSNumber
-    weak var sessionDelegate: TSAVideoCallSessionDelegate?
+    public weak var sessionDelegate: TSAVideoCallSessionDelegate?
     
     var websocket: TSAVideoCallSocket!
     var peerConnectionDict = [AnyHashable : TSAVideoCallConnection]()
