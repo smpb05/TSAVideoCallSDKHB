@@ -10,7 +10,7 @@ Pod::Spec.new do |spec|
   spec.ios.deployment_target = '11.0'
   spec.source_files = 'TSAVideoCallSDKHB/**/*.{swift}'
   spec.static_framework = true
-  spec.dependency 'TSAVideoCallSDK', '~> 0.0.2'
+  spec.dependency 'TSAVideoCallSDK', '~> 0.0.3'
   spec.pod_target_xcconfig = {
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
   }
