@@ -12,9 +12,9 @@ import WebRTC
 public class TSAVideoCallView: UIView{
     
     var videoSize: CGSize = CGSize()
-    let lowLevel: [UIImage] = [UIImage(named: "mic_0")!, UIImage(named: "mic_1")!]
-    let mediumLevel: [UIImage] = [UIImage(named: "mic_2")!, UIImage(named: "mic_3")!]
-    let loudLevel: [UIImage] = [UIImage(named: "mic_4")!, UIImage(named: "mic_5")!]
+    var lowLevel: [UIImage]? = nil
+    var mediumLevel: [UIImage]? = nil
+    var loudLevel: [UIImage]? = nil
     
     lazy var micButton: UIImageView = {
         let micButton = UIImageView()
@@ -69,18 +69,33 @@ public class TSAVideoCallView: UIView{
     public func setAudioLevel(level: NSNumber){
         let level = Int(truncating: level)
         if (level > 0 && level < 30){
-            micButton.animationImages = loudLevel
+            if let loudLevel = loudLevel {
+                micButton.animationImages = loudLevel
+            }
         }else if(level >= 30 && level < 60){
-            micButton.animationImages = mediumLevel
+            if let mediumLevel = mediumLevel {
+                micButton.animationImages = mediumLevel
+            }
         }else{
-            micButton.animationImages = lowLevel
+            if let lowLevel = lowLevel {
+                micButton.animationImages = lowLevel
+            }
         }
-        micButton.animationDuration = 1
-        micButton.startAnimating()
+        
+        if micButton.animationImages != nil {
+            micButton.animationDuration = 1
+            micButton.startAnimating()
+        }
+        
     }
     
     public func stopAnimation(){
         micButton.stopAnimating()
     }
     
+    public func animationSet(lowLevel: [UIImage], mediumLevel: [UIImage], loudLevel: [UIImage]){
+        self.lowLevel = lowLevel
+        self.mediumLevel = mediumLevel
+        self.loudLevel = loudLevel
+    }
 }
