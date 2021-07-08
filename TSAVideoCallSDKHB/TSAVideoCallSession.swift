@@ -13,7 +13,7 @@ private let mARDMediaStreamId = "ARDAMS"
 private let mARDAudioTrackId = "ARDAMSa0"
 private let mARDVideoTrackId = "ARDAMSv0"
 
-protocol TSAVideoCallSessionDelegate: NSObjectProtocol {
+public protocol TSAVideoCallSessionDelegate: AnyObject {
     func onConnected(session: TSAVideoCallSession)
     func onDisconnected(session: TSAVideoCallSession)
     func onStreamReceived(session: TSAVideoCallSession, stream: TSAVideoCallStream)
@@ -21,14 +21,14 @@ protocol TSAVideoCallSessionDelegate: NSObjectProtocol {
     func onError(session: TSAVideoCallSession, error: TSAVideoCallError)
 }
 
-class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerConnectionDelegate, RTCEAGLVideoViewDelegate{
+public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerConnectionDelegate, RTCEAGLVideoViewDelegate{
     
     
-    func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {
+    public func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {
         
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
+    public func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
         var connection: TSAVideoCallConnection?
         for key in peerConnectionDict {
             let tc: TSAVideoCallConnection = key.value
@@ -50,23 +50,23 @@ class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerConnecti
         })
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection, didRemove stream: RTCMediaStream) {
+    public func peerConnection(_ peerConnection: RTCPeerConnection, didRemove stream: RTCMediaStream) {
         
     }
     
-    func peerConnectionShouldNegotiate(_ peerConnection: RTCPeerConnection) {
+    public func peerConnectionShouldNegotiate(_ peerConnection: RTCPeerConnection) {
         
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
+    public func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
         
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceGatheringState) {
+    public func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceGatheringState) {
         
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
+    public func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
         var handleId: NSNumber?
         for key in peerConnectionDict {
             let tc: TSAVideoCallConnection = key.value
@@ -82,40 +82,40 @@ class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerConnecti
         }
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {
+    public func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {
         
     }
     
-    func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {
+    public func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {
         
     }
     
-    func videoView(_ videoView: RTCEAGLVideoView, didChangeVideoSize size: CGSize) {
+    public func videoView(_ videoView: RTCEAGLVideoView, didChangeVideoSize size: CGSize) {
     }
     
     
-    func onPublisherJoined(_ handleId: NSNumber?) {
+    public func onPublisherJoined(_ handleId: NSNumber?) {
         self.publisherHandleId = handleId
         self.sessionDelegate?.onConnected(session: self)
     }
     
-    func onPublisherRemoteJsep(_ handleId: NSNumber?, dict jsep: [AnyHashable : Any]?) {
+    public func onPublisherRemoteJsep(_ handleId: NSNumber?, dict jsep: [AnyHashable : Any]?) {
         
     }
     
-    func subscriberHandleRemoteJsep(_ handleId: NSNumber?, dict jsep: [AnyHashable : Any]?) {
+    public func subscriberHandleRemoteJsep(_ handleId: NSNumber?, dict jsep: [AnyHashable : Any]?) {
         
     }
     
-    func onLeaving(_ handleId: NSNumber?) {
+    public func onLeaving(_ handleId: NSNumber?) {
         
     }
     
-    func onTalking(_ handleId: NSNumber?, dict pluginData: [AnyHashable : Any]?) {
+    public func onTalking(_ handleId: NSNumber?, dict pluginData: [AnyHashable : Any]?) {
         
     }
     
-    func onStoppedTalking(_ handleId: NSNumber?, dict pluginData: [AnyHashable : Any]?) {
+    public func onStoppedTalking(_ handleId: NSNumber?, dict pluginData: [AnyHashable : Any]?) {
         
     }
     
