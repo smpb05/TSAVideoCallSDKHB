@@ -14,7 +14,7 @@ public class TSAVideoCallPublisher {
     let renderer = TSAVideoCallView()
     public weak var delegate: TSAVideoCallPublisherDelegate?
     
-    init(session: TSAVideoCallSession) {
+    public init(session: TSAVideoCallSession) {
         
     }
     

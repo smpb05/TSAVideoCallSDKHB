@@ -10,7 +10,7 @@ public class TSAVideoCallSubscriber {
     
     let renderer: TSAVideoCallView = TSAVideoCallView()
     
-    init(session: TSAVideoCallSession, stream: TSAVideoCallStream) {
+    public init(session: TSAVideoCallSession, stream: TSAVideoCallStream) {
         
     }
     
