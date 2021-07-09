@@ -132,7 +132,6 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     var publisherHandleId: NSNumber? = nil
     var localVideoTrack: RTCVideoTrack? = nil
     var localAudioTrack: RTCAudioTrack? = nil
-    var localView: RTCCameraPreviewView?
     var width: Float? = nil
     var height: Float? = nil
     
@@ -166,14 +165,14 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         let source = factory.avFoundationVideoSource(with: cameraConstraints)
         source.useBackCamera = useBackCamera
         let localVideoTrack = factory.videoTrack(with: source, trackId: mARDVideoTrackId)
-        localView?.captureSession = source.captureSession
+        mPublisher?.getVideoView().captureSession = source.captureSession
         return localVideoTrack
     }
     
     func currentMediaConstraint() -> [AnyHashable : Any]? {
         var mediaConstraintsDictionary: [AnyHashable : Any]? = nil
-        let widthConstraint = "\(String(describing: localView?.frame.width))"
-        let heightConstraint = "\(String(describing: localView?.frame.height))"
+        let widthConstraint = "\(String(describing: mPublisher?.getVideoView().frame.width))"
+        let heightConstraint = "\(String(describing: mPublisher?.getVideoView().frame.height))"
         let frameRateConstrait = "20"
         if widthConstraint != "" && heightConstraint != "" {
             mediaConstraintsDictionary = [

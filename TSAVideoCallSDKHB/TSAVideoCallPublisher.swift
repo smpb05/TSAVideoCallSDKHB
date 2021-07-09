@@ -11,18 +11,15 @@ import WebRTC
 public class TSAVideoCallPublisher {
  
     
-    let renderer = TSAVideoCallView()
+    let renderer = RTCCameraPreviewView(frame: .zero)
     public weak var delegate: TSAVideoCallPublisherDelegate?
     
     public init(session: TSAVideoCallSession) {
         
     }
     
-    public func getVideoView() -> TSAVideoCallView{
+    public func getVideoView() -> RTCCameraPreviewView{
         return renderer
     }
-    
-    public func getAGLRenderer() -> RTCEAGLVideoView{
-        return renderer.getVideoView()
-    }
+
 }
