@@ -100,14 +100,14 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     public func onPublisherRemoteJsep(_ handleId: NSNumber?, dict jsep: [AnyHashable : Any]?) {
-        var jc: TSAVideoCallConnection? = nil
+        var tc: TSAVideoCallConnection? = nil
         if let handleId = handleId {
-            jc = peerConnectionDict[handleId]
+            tc = peerConnectionDict[handleId]
         }
         let answerDescription = RTCSessionDescription(fromJSONDictionary: jsep)
-        jc?.connection!.setRemoteDescription(answerDescription!, completionHandler: { error in
+        tc?.connection!.setRemoteDescription(answerDescription!, completionHandler: { error in
         })
-
+        mPublisher?.delegate?.onStreamCreated(publisher: mPublisher!)
     }
     
     public func subscriberHandleRemoteJsep(_ handleId: NSNumber?, dict jsep: [AnyHashable : Any]?) {
