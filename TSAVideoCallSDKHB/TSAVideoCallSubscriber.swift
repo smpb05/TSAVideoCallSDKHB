@@ -6,6 +6,8 @@
 //
 
 import TSAVideoCallSDK
+import WebRTC
+
 public class TSAVideoCallSubscriber {
     
     let renderer: TSAVideoCallView = TSAVideoCallView()
@@ -14,7 +16,7 @@ public class TSAVideoCallSubscriber {
         
     }
     
-    public func getVideoView() -> TSAVideoCallView{
-        return renderer
+    public func getVideoView() -> RTCEAGLVideoView{
+        return renderer.getVideoView()
     }
 }

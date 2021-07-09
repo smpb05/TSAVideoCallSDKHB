@@ -41,7 +41,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         DispatchQueue.main.async(execute: {
             if stream.videoTracks.count != 0{
                 let remoteVideoTrack = stream.videoTracks[0]
-                if let remoteView =  self.mPublisher?.getAGLRenderer(){
+                if let remoteView =  self.mSubscriber?.getVideoView(){
                     remoteVideoTrack.add(remoteView)
                     connection?.videoTrack = remoteVideoTrack
                     connection?.videoView = remoteView
