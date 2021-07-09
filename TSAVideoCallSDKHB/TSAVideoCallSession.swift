@@ -29,23 +29,19 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
-        var connection: TSAVideoCallConnection?
-        for key in peerConnectionDict {
+        var mhandleId: AnyHashable?
+        for key in peerConnectionDict{
             let tc: TSAVideoCallConnection = key.value
             if peerConnection == tc.connection {
-                connection = tc
+                mhandleId = key.key
                 break
             }
         }
 
         DispatchQueue.main.async(execute: {
             if stream.videoTracks.count != 0{
-                let remoteVideoTrack = stream.videoTracks[0]
-                if let remoteView =  self.mSubscriber?.getVideoView(){
-                    remoteVideoTrack.add(remoteView)
-                    connection?.videoTrack = remoteVideoTrack
-                    connection?.videoView = remoteView
-                }
+                let tStream = TSAVideoCallStream(handleId: mhandleId, stream: stream)
+                self.sessionDelegate?.onStreamReceived(session: self, stream: tStream)
             }
         })
     }
@@ -111,10 +107,42 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     public func subscriberHandleRemoteJsep(_ handleId: NSNumber?, dict jsep: [AnyHashable : Any]?) {
-        
+        let peerConnection = createPeerConnection()
+        let tc = TSAVideoCallConnection()
+        tc.connection = peerConnection
+        tc.handleId = handleId
+        if let handleId = handleId {
+            peerConnectionDict[handleId] = tc
+        }
+        let answerDescription = RTCSessionDescription(fromJSONDictionary: jsep)
+        peerConnection?.setRemoteDescription(answerDescription!, completionHandler: { error in
+        })
+        let mandatoryConstraints = [
+            "OfferToReceiveAudio": "true",
+            "OfferToReceiveVideo": "true"
+        ]
+        let constraints = RTCMediaConstraints(mandatoryConstraints: mandatoryConstraints, optionalConstraints: nil)
+        peerConnection!.answer(for: constraints, completionHandler: { sdp, error in
+            peerConnection!.setLocalDescription(sdp!, completionHandler: { error in
+            })
+            self.websocket.subscriberCreateAnswer(handleId, sdp: sdp)
+        })
     }
     
     public func onLeaving(_ handleId: NSNumber?) {
+        var tc: TSAVideoCallConnection? = nil
+        if let handleId = handleId {
+            tc = peerConnectionDict[handleId]
+        }
+        tc?.connection!.close()
+        tc?.connection = nil
+        var videoTrack = tc?.videoTrack
+        videoTrack?.remove(tc?.videoView! as! RTCVideoRenderer)
+        videoTrack = nil
+        tc?.videoView?.renderFrame(nil)
+        tc?.videoView!.removeFromSuperview()
+        peerConnectionDict.removeValue(forKey: handleId)
+
         
     }
     
@@ -143,7 +171,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     var height: Float? = nil
     
     var mPublisher: TSAVideoCallPublisher?
-    var mSubscriber: TSAVideoCallSubscriber?
+    var mSubscriber: [TSAVideoCallSubscriber] = []
     
     public init(apiUrl: String, roomId: NSNumber) {
         self.apiUrl = apiUrl
@@ -231,7 +259,19 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     public func subscribe(subscriber: TSAVideoCallSubscriber){
-        mSubscriber = subscriber
+        mSubscriber.append(subscriber)
+        let remoteVideoTrack = subscriber.getStream().videoTracks[0]
+        var connection: TSAVideoCallConnection?
+        for key in peerConnectionDict{
+            if key.key == subscriber.getHandleId() {
+                connection = key.value
+                break
+            }
+        }
+        remoteVideoTrack.add(subscriber.getVideoView())
+        connection?.videoTrack = remoteVideoTrack
+        connection?.videoView = subscriber.getVideoView()
+        subscriber.delegate?.onConnected(subscriber: subscriber)
     }
     
     
