@@ -1,0 +1,24 @@
+PODS:
+  - Starscream (4.0.4)
+  - TSAVideoCallSDK (0.0.6):
+    - Starscream (~> 4.0.0)
+    - WebRTC
+  - WebRTC (63.11.20455)
+
+DEPENDENCIES:
+  - TSAVideoCallSDK (= 0.0.6)
+
+SPEC REPOS:
+  trunk:
+    - Starscream
+    - TSAVideoCallSDK
+    - WebRTC
+
+SPEC CHECKSUMS:
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  TSAVideoCallSDK: 54b14d889ef5885e43dd48717dae8b3b67a86093
+  WebRTC: f2a6203584745fe53532633397557876b5d71640
+
+PODFILE CHECKSUM: 865a80c1971dda1e1cff11f6317be16738817575
+
+COCOAPODS: 1.10.1
