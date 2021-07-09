@@ -1,6 +1,0 @@
-framework module Pods_TSAVideoCallSDKHB {
-  umbrella header "Pods-TSAVideoCallSDKHB-umbrella.h"
-
-  export *
-  module * { export * }
-}
