@@ -105,7 +105,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
             jc = peerConnectionDict[handleId]
         }
         let answerDescription = RTCSessionDescription(fromJSONDictionary: jsep)
-        jc?.connection!.setRemoteDescription(answerDescription, completionHandler: { error in
+        jc?.connection!.setRemoteDescription(answerDescription!, completionHandler: { error in
         })
 
     }
