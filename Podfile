@@ -6,7 +6,7 @@ target 'TSAVideoCallSDKHB' do
   use_frameworks!
 
   # Pods for TSAVideoCallSDKHB
-  pod 'TSAVideoCallSDK'
+  pod 'TSAVideoCallSDK', '0.0.4'
   
 
 end

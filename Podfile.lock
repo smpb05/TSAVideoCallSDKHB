@@ -1,12 +1,12 @@
 PODS:
   - Starscream (4.0.4)
-  - TSAVideoCallSDK (0.0.3):
+  - TSAVideoCallSDK (0.0.4):
     - Starscream (~> 4.0.0)
     - WebRTC
   - WebRTC (63.11.20455)
 
 DEPENDENCIES:
-  - TSAVideoCallSDK
+  - TSAVideoCallSDK (= 0.0.4)
 
 SPEC REPOS:
   trunk:
@@ -16,9 +16,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  TSAVideoCallSDK: a975279b6a68da5ee5b4354b8bd6e61f67abeb35
+  TSAVideoCallSDK: c9371e65a3b275f74fbe11a714c8b50a343b1dea
   WebRTC: f2a6203584745fe53532633397557876b5d71640
 
-PODFILE CHECKSUM: 7ae8a03e43b5d6264b549c19ef9dc90185be8cf4
+PODFILE CHECKSUM: debc5c8a4f460f5a47f6bd33579e2c7f53b0c435
 
 COCOAPODS: 1.10.1
