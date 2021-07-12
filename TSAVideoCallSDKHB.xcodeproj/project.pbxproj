@@ -15,7 +15,6 @@
 		E74D8FC5269029DC0056D909 /* TSAVideoCallPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D8FC4269029DC0056D909 /* TSAVideoCallPublisher.swift */; };
 		E74D8FC7269029F80056D909 /* TSAVideoCallSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D8FC6269029F80056D909 /* TSAVideoCallSubscriber.swift */; };
 		E74D8FC926902A0D0056D909 /* TSAVideoCallSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D8FC826902A0D0056D909 /* TSAVideoCallSession.swift */; };
-		E76FAD4F26956DC200F566E9 /* VideoCallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76FAD4E26956DC200F566E9 /* VideoCallViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,7 +41,6 @@
 		E74D8FC4269029DC0056D909 /* TSAVideoCallPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSAVideoCallPublisher.swift; sourceTree = "<group>"; };
 		E74D8FC6269029F80056D909 /* TSAVideoCallSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSAVideoCallSubscriber.swift; sourceTree = "<group>"; };
 		E74D8FC826902A0D0056D909 /* TSAVideoCallSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSAVideoCallSession.swift; sourceTree = "<group>"; };
-		E76FAD4E26956DC200F566E9 /* VideoCallViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCallViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +100,6 @@
 				E70294FC269053B500208A3F /* TSAVideoCallSubscriberDelegate.swift */,
 				E70294FE2690549700208A3F /* TSAVideoCallStream.swift */,
 				E70295002690551D00208A3F /* TSAVideoCallError.swift */,
-				E76FAD4E26956DC200F566E9 /* VideoCallViewController.swift */,
 			);
 			path = TSAVideoCallSDKHB;
 			sourceTree = "<group>";
@@ -193,7 +190,6 @@
 			files = (
 				E70294FF2690549700208A3F /* TSAVideoCallStream.swift in Sources */,
 				E74D8FC926902A0D0056D909 /* TSAVideoCallSession.swift in Sources */,
-				E76FAD4F26956DC200F566E9 /* VideoCallViewController.swift in Sources */,
 				E74D8FC7269029F80056D909 /* TSAVideoCallSubscriber.swift in Sources */,
 				E70294FB2690539B00208A3F /* TSAVideoCallPublisherDelegate.swift in Sources */,
 				E74D8FC5269029DC0056D909 /* TSAVideoCallPublisher.swift in Sources */,

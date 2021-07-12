@@ -271,6 +271,66 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     
+    public func switchCamera(){
+        if let session = mPublisher?.getVideoView().captureSession {
+            guard let cureentCameraInput: AVCaptureInput = session.inputs.first else {
+                return
+            }
+            session.beginConfiguration()
+            session.removeInput(cureentCameraInput)
+            var newCamera: AVCaptureDevice! = nil
+            if let input = cureentCameraInput as? AVCaptureDeviceInput{
+                if (input.device.position == .back) {
+                    newCamera = cameraWithPosition(position: .front)
+                }else{
+                    newCamera = cameraWithPosition(position: .back)
+                }
+            }
+            var err: NSError?
+            var newVideoInput: AVCaptureDeviceInput!
+            do {
+                newVideoInput = try AVCaptureDeviceInput(device: newCamera)
+            }catch let error as NSError {
+                err = error
+                newVideoInput = nil
+            }
+            if newVideoInput == nil || err != nil {
+            }else{
+                session.addInput(newVideoInput)
+            }
+            
+            session.commitConfiguration()
+        }
+    }
+    
+    func cameraWithPosition(position: AVCaptureDevice.Position) -> AVCaptureDevice?{
+        let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .unspecified)
+        for device in discoverySession.devices{
+            if device.position == position {
+                return device
+            }
+        }
+        return nil
+    }
+    
+    
+    public func onMediaTap(audio: Bool, video: Bool) {
+        if audio {
+            localAudioTrack?.isEnabled = true
+        }else{
+            localAudioTrack?.isEnabled = false
+        }
+        
+        if video {
+            localVideoTrack?.isEnabled = true
+        }else{
+            localVideoTrack?.isEnabled = false
+        }
+        
+        websocket.configureMedia(handleId: publisherHandleId, audio: audio, video: video)
+    }
+    
+    
     func createPublisherPeerConnection() {
         localVideoTrack = createLocalVideoTrack(useBackCamera: false)
         localAudioTrack = createLocalAudioTrack()
@@ -357,5 +417,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         return constraints
     }
     
-    
+    public func hangup(){
+        websocket.unpublish(handleId: publisherHandleId)
+    }
 }
