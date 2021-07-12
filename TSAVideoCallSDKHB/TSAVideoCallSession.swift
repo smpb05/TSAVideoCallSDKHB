@@ -87,10 +87,11 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     public func videoView(_ videoView: RTCEAGLVideoView, didChangeVideoSize size: CGSize) {
+        print("remote size \(size)")
         for subscriber in mSubscribers{
-            print(" remote size \(size)")
+            print("remote size \(size)")
             if subscriber.getVideoView() == videoView {
-                print(" remote equal ")
+                print("remote equal ")
                 subscriber.setVideoSize(size: size)
                 let bounds = subscriber.getVideoView().frame
                 if size.width > 0 && size.height > 0 {
