@@ -15,9 +15,11 @@ public class TSAVideoCallSubscriber {
     public weak var delegate: TSAVideoCallSubscriberDelegate?
     private var stream: TSAVideoCallStream
     private var videoSize: CGSize? = nil
+    private var session: TSAVideoCallSession
     
     public init(session: TSAVideoCallSession, stream: TSAVideoCallStream) {
         self.stream = stream
+        self.session = session
     }
     
     public func getVideoView() -> RTCEAGLVideoView{
@@ -38,6 +40,27 @@ public class TSAVideoCallSubscriber {
     
     public func getVideoSize() -> CGSize?{
         return videoSize
+    }
+    
+    public func setFrame(bounds: CGRect){
+        if let size = session.getVideoSize(videoView: renderer.getVideoView()) {
+            self.videoSize = size
+            if size.width > 0 && size.height > 0 {
+                var remoteVideoFrame = AVMakeRect(aspectRatio: size, insideRect: bounds)
+                var scale: CGFloat = 1
+                if remoteVideoFrame.size.width > remoteVideoFrame.size.height {
+                    scale = bounds.size.height / remoteVideoFrame.size.height
+                }else{
+                    scale = bounds.size.width / remoteVideoFrame.size.width
+                }
+                remoteVideoFrame.size.height *= scale
+                remoteVideoFrame.size.width *= scale
+                renderer.getVideoView().frame = remoteVideoFrame
+                renderer.getVideoView().center = CGPoint(x: bounds.midX, y: bounds.midY)
+            }else {
+                renderer.getVideoView().frame = bounds
+            }
+        }
     }
 
 }

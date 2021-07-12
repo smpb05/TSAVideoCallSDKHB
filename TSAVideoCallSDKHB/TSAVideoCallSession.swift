@@ -87,30 +87,11 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     public func videoView(_ videoView: RTCEAGLVideoView, didChangeVideoSize size: CGSize) {
-        print("remote size \(size)")
-        for subscriber in mSubscribers{
-            print("remote size \(size)")
-            if subscriber.getVideoView() == videoView {
-                print("remote equal ")
-                subscriber.setVideoSize(size: size)
-                let bounds = subscriber.getVideoView().frame
-                if size.width > 0 && size.height > 0 {
-                    var remoteVideoFrame = AVMakeRect(aspectRatio: size, insideRect: bounds)
-                    var scale: CGFloat = 1
-                    if remoteVideoFrame.size.width > remoteVideoFrame.size.height {
-                        scale = bounds.size.height / remoteVideoFrame.size.height
-                    }else{
-                        scale = bounds.size.width / remoteVideoFrame.size.width
-                    }
-                    remoteVideoFrame.size.height *= scale
-                    remoteVideoFrame.size.width *= scale
-                    subscriber.getVideoView().frame = remoteVideoFrame
-                    subscriber.getVideoView().center = CGPoint(x: bounds.midX, y: bounds.midY)
-                }else {
-                    subscriber.getVideoView().frame = bounds
-                }
-            }
-        }
+        mSubscribersVideoSize[videoView] = size
+    }
+    
+    public func getVideoSize(videoView: RTCEAGLVideoView) -> CGSize?{
+        return mSubscribersVideoSize[videoView]
     }
     
     
@@ -196,6 +177,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     
     var mPublisher: TSAVideoCallPublisher?
     var mSubscribers: [TSAVideoCallSubscriber] = []
+    var mSubscribersVideoSize = [RTCEAGLVideoView : CGSize]()
     
     public init(apiUrl: String, roomId: NSNumber) {
         self.apiUrl = apiUrl
