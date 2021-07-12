@@ -34,32 +34,10 @@ public class TSAVideoCallSubscriber {
     
     public func setVideoSize(size: CGSize){
         self.videoSize = size
-        changeFrame()
     }
     
     public func getVideoSize() -> CGSize?{
         return videoSize
     }
-    
-    private func changeFrame(){
-        if let size = videoSize{
-            
-            let bounds = renderer.getVideoView().frame
-           
-            var scale = CGFloat(1)
-            var x = bounds.minX
-            var y = bounds.minY
-            var newSize = size
-            scale = bounds.height/size.height
-            newSize = CGSize(width: size.width*scale, height: size.height*scale)
-            if(size.width > size.height){
-                x = (bounds.width-newSize.width)/2
-                y = (bounds.height-newSize.height)/2
-            }
-            let rect = CGRect(x: x, y: y, width: newSize.width, height: newSize.height)
-            renderer.getVideoView().frame = rect
-        }
-        
-    }
-    
+
 }
