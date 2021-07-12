@@ -87,6 +87,13 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     public func videoView(_ videoView: RTCEAGLVideoView, didChangeVideoSize size: CGSize) {
+        for subscriber in mSubscribers{
+            if subscriber.getVideoView() == videoView {
+                if subscriber.getVideoSize() != size{
+                    subscriber.setVideoSize(size: size)
+                }
+            }
+        }
     }
     
     
@@ -171,7 +178,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     var height: Float? = nil
     
     var mPublisher: TSAVideoCallPublisher?
-    var mSubscriber: [TSAVideoCallSubscriber] = []
+    var mSubscribers: [TSAVideoCallSubscriber] = []
     
     public init(apiUrl: String, roomId: NSNumber) {
         self.apiUrl = apiUrl
@@ -259,7 +266,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     public func subscribe(subscriber: TSAVideoCallSubscriber){
-        mSubscriber.append(subscriber)
+        mSubscribers.append(subscriber)
         let remoteVideoTrack = subscriber.getStream().videoTracks[0]
         var connection: TSAVideoCallConnection?
         for key in peerConnectionDict{
