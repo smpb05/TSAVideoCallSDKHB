@@ -43,8 +43,7 @@ public class TSAVideoCallSubscriber {
     }
     
     public func setFrame(bounds: CGRect){
-        if let size = session.getVideoSize(videoView: renderer.getVideoView()) {
-            self.videoSize = size
+        if let size = videoSize {
             if size.width > 0 && size.height > 0 {
                 var remoteVideoFrame = AVMakeRect(aspectRatio: size, insideRect: bounds)
                 var scale: CGFloat = 1

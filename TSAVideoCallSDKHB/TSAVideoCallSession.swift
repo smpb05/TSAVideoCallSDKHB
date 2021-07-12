@@ -18,6 +18,7 @@ public protocol TSAVideoCallSessionDelegate: AnyObject {
     func onDisconnected(session: TSAVideoCallSession)
     func onStreamReceived(session: TSAVideoCallSession, stream: TSAVideoCallStream)
     func onStreamDropped(session: TSAVideoCallSession, stream: TSAVideoCallStream)
+    func onStreamSizeChanged(videoView: RTCEAGLVideoView, size: CGSize)
     func onError(session: TSAVideoCallSession, error: TSAVideoCallError)
 }
 
@@ -87,13 +88,8 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     public func videoView(_ videoView: RTCEAGLVideoView, didChangeVideoSize size: CGSize) {
-        mSubscribersVideoSize[videoView] = size
+        sessionDelegate?.onStreamSizeChanged(videoView: videoView, size: size)
     }
-    
-    public func getVideoSize(videoView: RTCEAGLVideoView) -> CGSize?{
-        return mSubscribersVideoSize[videoView]
-    }
-    
     
     public func onPublisherJoined(_ handleId: NSNumber?) {
         self.publisherHandleId = handleId
