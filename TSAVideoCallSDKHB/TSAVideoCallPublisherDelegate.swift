@@ -4,7 +4,7 @@
 //
 //  Created by smartex on 03.07.2021.
 //
-
+import TSAVideoCallSDK
 public protocol TSAVideoCallPublisherDelegate: AnyObject {
      func onStreamCreated(publisher: TSAVideoCallPublisher)
      func onStreamDestroyed(publisher: TSAVideoCallPublisher)

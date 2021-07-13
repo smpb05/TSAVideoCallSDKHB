@@ -56,5 +56,9 @@ public class TSAVideoCallSubscriber: RTCEAGLVideoViewDelegate {
     public func getHandleId() -> AnyHashable?{
         return stream.getHandleId()
     }
+    
+    public func getTSAVideoCallStream() -> TSAVideoCallStream?{
+        return stream
+    }
 
 }

@@ -22,6 +22,38 @@ public protocol TSAVideoCallSessionDelegate: AnyObject {
 }
 
 public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerConnectionDelegate{
+   
+    public func onUnpublished(_ handleId: NSNumber?) {
+        if(handleId == self.publisherHandleId){
+            mPublisher?.delegate?.onStreamDestroyed(publisher: mPublisher!)
+        } else {
+            for subscriber in mSubscribers {
+                if subscriber.getHandleId() as? NSNumber == handleId {
+                    self.sessionDelegate?.onStreamDropped(session: self, stream: subscriber.getTSAVideoCallStream()!)
+                    break
+                }
+            }
+        }
+        
+    }
+   
+    public func onError(_ error: TSAVideoCallError) {
+        if error.getErrorType() == TSAVideoCallError.ErrorType.SessionError {
+            self.sessionDelegate?.onError(session: self, error: error)
+        }
+        if error.getErrorType() == TSAVideoCallError.ErrorType.PublisherError {
+            mPublisher?.delegate?.onError(publisher: mPublisher!, error: error)
+        }
+        if error.getErrorType() == TSAVideoCallError.ErrorType.SubscriberError {
+            
+        }
+        
+    }
+    
+    public func onSocketDisconnected(code: NSNumber, message: String?) {
+        self.sessionDelegate?.onDisconnected(session: self)
+    }
+    
     
     public func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {
         
@@ -132,13 +164,16 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         tc?.connection!.close()
         tc?.connection = nil
         var videoTrack = tc?.videoTrack
-        videoTrack?.remove(tc?.videoView! as! RTCVideoRenderer)
+        videoTrack?.remove(videoTrack as! RTCVideoRenderer)
         videoTrack = nil
         tc?.videoView?.renderFrame(nil)
         tc?.videoView!.removeFromSuperview()
         peerConnectionDict.removeValue(forKey: handleId)
-
-        
+        for subscriber in mSubscribers {
+            if handleId == subscriber.getHandleId() as? NSNumber {
+                subscriber.delegate?.onDisconnected(subcriber: subscriber)
+            }
+        }
     }
     
     public func onTalking(_ handleId: NSNumber?, dict pluginData: [AnyHashable : Any]?) {
@@ -180,8 +215,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
 
         RTCInitializeSSL();
         RTCSetupInternalTracer();
-            
-    
+ 
     }
     
     func createLocalAudioTrack() -> RTCAudioTrack? {
@@ -271,7 +305,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     
-    public func switchCamera(){
+    internal func switchCamera(){
         if let session = mPublisher?.getVideoView().captureSession {
             guard let cureentCameraInput: AVCaptureInput = session.inputs.first else {
                 return
@@ -314,7 +348,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     
-    public func onMediaTap(audio: Bool, video: Bool) {
+    internal func onMediaTap(audio: Bool, video: Bool) {
         if audio {
             localAudioTrack?.isEnabled = true
         }else{
@@ -417,7 +451,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         return constraints
     }
     
-    public func hangup(){
+    internal func hangup(){
         websocket.unpublish(handleId: publisherHandleId)
     }
 }

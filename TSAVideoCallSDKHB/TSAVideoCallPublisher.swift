@@ -40,7 +40,7 @@ public class TSAVideoCallPublisher {
     }
     
     public func hangup(){
-        
+        session.hangup()
     }
     
     
