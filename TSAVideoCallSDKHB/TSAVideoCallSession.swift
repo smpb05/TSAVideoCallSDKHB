@@ -22,6 +22,19 @@ public protocol TSAVideoCallSessionDelegate: AnyObject {
 }
 
 public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerConnectionDelegate{
+    
+    public func onError(_ error: TSAVideoCallSDK.TSAVideoCallError) {
+        if error.getErrorType() == TSAVideoCallSDK.TSAVideoCallError.ErrorType.SessionError {
+            self.sessionDelegate?.onError(session: self, error: TSAVideoCallError(error: error))
+        }
+        if error.getErrorType() == TSAVideoCallSDK.TSAVideoCallError.ErrorType.PublisherError {
+            mPublisher?.delegate?.onError(publisher: mPublisher!, error: TSAVideoCallError(error: error))
+        }
+        if error.getErrorType() == TSAVideoCallSDK.TSAVideoCallError.ErrorType.SubscriberError {
+            self.sessionDelegate?.onError(session: self, error: TSAVideoCallError(error: error))
+        }
+    }
+    
    
     public func onUnpublished(_ handleId: NSNumber?) {
         if(handleId == self.publisherHandleId){
@@ -37,18 +50,6 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         
     }
    
-    public func onError(_ error: TSAVideoCallError) {
-        if error.getErrorType() == TSAVideoCallError.ErrorType.SessionError {
-            self.sessionDelegate?.onError(session: self, error: error)
-        }
-        if error.getErrorType() == TSAVideoCallError.ErrorType.PublisherError {
-            mPublisher?.delegate?.onError(publisher: mPublisher!, error: error)
-        }
-        if error.getErrorType() == TSAVideoCallError.ErrorType.SubscriberError {
-            
-        }
-        
-    }
     
     public func onSocketDisconnected(code: NSNumber, message: String?) {
         self.sessionDelegate?.onDisconnected(session: self)

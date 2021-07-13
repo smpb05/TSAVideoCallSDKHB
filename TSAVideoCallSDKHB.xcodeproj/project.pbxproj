@@ -14,6 +14,7 @@
 		E74D8FC5269029DC0056D909 /* TSAVideoCallPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D8FC4269029DC0056D909 /* TSAVideoCallPublisher.swift */; };
 		E74D8FC7269029F80056D909 /* TSAVideoCallSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D8FC6269029F80056D909 /* TSAVideoCallSubscriber.swift */; };
 		E74D8FC926902A0D0056D909 /* TSAVideoCallSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74D8FC826902A0D0056D909 /* TSAVideoCallSession.swift */; };
+		E7C2C335269DAD7A006A44E2 /* TSAVideoCallError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C2C334269DAD7A006A44E2 /* TSAVideoCallError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,7 @@
 		E74D8FC4269029DC0056D909 /* TSAVideoCallPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSAVideoCallPublisher.swift; sourceTree = "<group>"; };
 		E74D8FC6269029F80056D909 /* TSAVideoCallSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSAVideoCallSubscriber.swift; sourceTree = "<group>"; };
 		E74D8FC826902A0D0056D909 /* TSAVideoCallSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSAVideoCallSession.swift; sourceTree = "<group>"; };
+		E7C2C334269DAD7A006A44E2 /* TSAVideoCallError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TSAVideoCallError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				E70294FA2690539B00208A3F /* TSAVideoCallPublisherDelegate.swift */,
 				E70294FC269053B500208A3F /* TSAVideoCallSubscriberDelegate.swift */,
 				E70294FE2690549700208A3F /* TSAVideoCallStream.swift */,
+				E7C2C334269DAD7A006A44E2 /* TSAVideoCallError.swift */,
 			);
 			path = TSAVideoCallSDKHB;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				E70294FB2690539B00208A3F /* TSAVideoCallPublisherDelegate.swift in Sources */,
 				E74D8FC5269029DC0056D909 /* TSAVideoCallPublisher.swift in Sources */,
 				E70294FD269053B500208A3F /* TSAVideoCallSubscriberDelegate.swift in Sources */,
+				E7C2C335269DAD7A006A44E2 /* TSAVideoCallError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

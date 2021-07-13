@@ -4,7 +4,6 @@
 //
 //  Created by smartex on 03.07.2021.
 //
-import TSAVideoCallSDK
 
 public protocol TSAVideoCallSubscriberDelegate: AnyObject{
     func onConnected(subscriber: TSAVideoCallSubscriber)
