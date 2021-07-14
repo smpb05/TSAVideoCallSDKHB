@@ -13,6 +13,7 @@ public class TSAVideoCallError{
     private var code: ErrorCode
     private var message: String?
     
+    
     public init(errorType: ErrorType, errorCode: ErrorCode, message: String?){
         self.type = errorType
         self.code = errorCode
