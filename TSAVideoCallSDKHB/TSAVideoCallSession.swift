@@ -164,9 +164,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         }
         tc?.connection!.close()
         tc?.connection = nil
-        var videoTrack = tc?.videoTrack
-        videoTrack?.remove(videoTrack as! RTCVideoRenderer)
-        videoTrack = nil
+        tc?.videoTrack = nil
         tc?.videoView?.renderFrame(nil)
         tc?.videoView!.removeFromSuperview()
         peerConnectionDict.removeValue(forKey: handleId)
