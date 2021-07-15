@@ -8,6 +8,7 @@
 import TSAVideoCallSDK
 import Foundation
 import WebRTC
+import Alamofire
 
 private let mARDMediaStreamId = "ARDAMS"
 private let mARDAudioTrackId = "ARDAMSa0"
@@ -183,8 +184,6 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         
     }
     
-    
-    var apiUrl: String
     var roomId: NSNumber
     public weak var sessionDelegate: TSAVideoCallSessionDelegate?
     
@@ -203,18 +202,24 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     var mSubscribers: [TSAVideoCallSubscriber] = []
     var mSubscribersVideoSize = [RTCEAGLVideoView : CGSize]()
     
-    public init(apiUrl: String, roomId: NSNumber) {
-        self.apiUrl = apiUrl
-        self.roomId = roomId
+    var config: TSAVideoCallConfig
+    
+    
+    public init(config: TSAVideoCallConfig) {
+        self.config = config
         super.init()
         
         NotificationCenter.default.addObserver(self, selector: #selector(didSessionRouteChange(_:)), name: AVAudioSession.routeChangeNotification, object: nil)
         setSpeakerStates(enabled: true)
-        websocket = TSAVideoCallSocket(apiUrl: apiUrl, roomId: roomId)
+        
+        fetchRoomId(callHash: config.callHash)
 
+    }
+    
+    private func initSession(){
+        websocket = TSAVideoCallSocket(apiUrl: config.webSocketMediaServerUrl, roomId: roomId)
         RTCInitializeSSL();
         RTCSetupInternalTracer();
- 
     }
     
     func createLocalAudioTrack() -> RTCAudioTrack? {
@@ -452,5 +457,25 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     
     internal func hangup(){
         websocket.unpublish(handleId: publisherHandleId)
+    }
+}
+
+extension TSAVideoCallSession{
+    func fetchRoomId(callHash: String){
+        let headers: HTTPHeaders = ["Authorization": "Basic dmlkZW9CYW5rOkhmeUxqdnlTdENidmRqS3M="]
+        let params = ["callHash": callHash]
+        
+        let request = AF.request(TSAVideoCallConfig.webUrl, headers: headers, method: .post, parameters: params)
+        
+        request.responseJSON { response in
+            debugPrint(response)
+            if(response["status"].caseInsensitiveCompare("OK") == .orderedSame){
+                self.roomId = response["room"] as NSNumber
+                initSession()
+            }else{
+                let error = TSAVideoCallSDK.TSAVideoCallError(errorType: TSAVideoCallSDK.TSAVideoCallError.ErrorType.SessionError, errorCode: -1, message: "callHash error: \(response["message"])")
+                sessionDelegate?.onError(session: self, error: TSAVideoCallError(error: error))
+            }
+        }
     }
 }
