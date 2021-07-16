@@ -1,24 +1,32 @@
 PODS:
+  - Alamofire (5.4.3)
+  - Socket.IO-Client-Swift (16.0.0):
+    - Starscream (~> 4.0)
   - Starscream (4.0.4)
-  - TSAVideoCallSDK (0.1.0):
-    - Starscream (~> 4.0.0)
+  - TSAVideoCallSDK (0.1.1):
+    - Alamofire (~> 5.4)
+    - Socket.IO-Client-Swift (= 16.0.0)
     - WebRTC
   - WebRTC (63.11.20455)
 
 DEPENDENCIES:
-  - TSAVideoCallSDK
+  - TSAVideoCallSDK (= 0.1.1)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - Socket.IO-Client-Swift
     - Starscream
     - TSAVideoCallSDK
     - WebRTC
 
 SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  Socket.IO-Client-Swift: ff35cb6e4831f681441ce25bc1078039ca8602ea
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
-  TSAVideoCallSDK: 80cc55f2168c7e0d1f81967671d2d74fb9171a9d
+  TSAVideoCallSDK: cf5fdfd899a4c597a47a3df7a9ada56cd45d996c
   WebRTC: f2a6203584745fe53532633397557876b5d71640
 
-PODFILE CHECKSUM: ca5b8f560329d5fc3d3c1f65945edf43e10e6846
+PODFILE CHECKSUM: 11b862cc40b6563b00502fcdbcbcb4931b8d80bc
 
 COCOAPODS: 1.10.1

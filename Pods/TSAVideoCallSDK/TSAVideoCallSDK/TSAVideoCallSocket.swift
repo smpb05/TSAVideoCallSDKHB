@@ -364,7 +364,6 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
                 self.delegate?.subscriberHandleRemoteJsep(handle?.handleId, dict: jsep)
             }
             
-            
             self.handleDict?[handle.handleId!] = handle
             self.feedDict?[handle.feedId!] = handle
             self.subscriberJoinRoom(handle)
@@ -450,35 +449,6 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
 
         socket.write(string: jsonToString(json: offerMessage as AnyObject))
     }
-    
-    
-//    func subscriberOnLeaving(handle: TSAVideoCallHandle?) {
-//        let transaction = randomString(withLength: 12)
-//        let videoCallTransaction = TSAVideoCallTransaction()
-//        videoCallTransaction.tid = transaction
-//        videoCallTransaction.success = { data in
-//            self.delegate?.onLeaving(handle?.handleId)
-//            self.handleDict?.removeValue(forKey: handle!.handleId!)
-//            self.feedDict?.removeValue(forKey: handle!.feedId!)
-//        }
-//        videoCallTransaction.error = { data in
-//            let error = TSAVideoCallError(errorType: TSAVideoCallError.ErrorType.SubscriberError, errorCode: TSAVideoCallError.ErrorCode.SubsciberFailedToLeaveRoom, message: data?.description)
-//            self.delegate?.onError(error)
-//        }
-//        transactionsDict?[transaction] = videoCallTransaction
-//        var message: [String : Any]? = nil
-//
-//        if let handleId = handle?.handleId {
-//            message = [
-//            "janus": "detach",
-//            "transaction": transaction,
-//            "session_id": sessionId!,
-//            "handle_id": handleId
-//            ]
-//
-//        }
-//        socket.write(string: jsonToString(json: message as AnyObject))
-//    }
     
     public func configureMedia(handleId: NSNumber?, audio: Bool, video: Bool) {
         let transaction = randomString(withLength: 12)
