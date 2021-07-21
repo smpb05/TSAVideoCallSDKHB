@@ -16,32 +16,47 @@ protocol TSAVideoCallBrokerDelegate: AnyObject {
 class TSAVideoCallBrokerSocket {
     
     public weak var brokerDelegate: TSAVideoCallBrokerDelegate?
-    
     var manager: SocketManager
     var socket: SocketIOClient
     
-    init(brokerURL: String) {
-        manager = SocketManager(socketURL: URL(string: brokerURL)!, config: [.log(true), .compress])
-        socket = manager.defaultSocket
+    init(brokerUrl: String, path: String) {
+        manager = SocketManager(socketURL: URL(string: brokerUrl)!, config: [ .version(.two), .compress, .path(path)])
+        socket = manager.socket(forNamespace: "/client")
         addHandlers()
-        socket.connect()
     }
     
+    
     private func addHandlers(){
-        socket.on(clientEvent: .connect) { (data, ack) in
+        
+        self.socket.on(clientEvent: .error){ (data, ack) in
+            if let errorStr: String = data[0] as? String{
+                debugPrint("error \(errorStr)")
+            }
+        }
+        
+        self.socket.once(clientEvent: .connect){ (data, ack) in
             self.brokerDelegate?.onConnected()
+            debugPrint("connected once")
         }
-        socket.on(clientEvent: .disconnect){ (data, ack) in
+        
+        self.socket.on("EVENT"){ (data, ack) in
+            debugPrint("event \(data)")
+        }
+        
+        self.socket.on(clientEvent: .disconnect){ (data, ack) in
             self.brokerDelegate?.onDisconnected()
+            debugPrint("disconnected")
         }
-        socket.on("event") { (data, ack) in
-            print("socket event: \(data.first)")
-        }
-            
+        
+        self.socket.connect()
+
     }
         
     
     func stop() {
         socket.removeAllHandlers()
     }
+    
 }
+
+

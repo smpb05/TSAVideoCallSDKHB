@@ -9,17 +9,19 @@ import Foundation
 
 public struct TSAVideoCallConfig{
     
-    private var webUrl: String = "https://videobank-dev.t2m.kz/broker"
-    private var webSocketMediaServerUrl: String = ""
-    private var webSocketBrokerUrl: String = "https://videobank-dev.t2m.kz/client"
-    private var callHash: String = ""
-    private let libVersion = "0.2.3"
+    private var webUrl: String
+    private var webSocketMediaServerUrl: String
+    private var webSocketBrokerUrl: String
+    private var webSocketBrokerPath: String
+    private var callHash: String
+    private let libVersion = "0.2.5"
     private let authData = "Basic dmlkZW9CYW5rOkhmeUxqdnlTdENidmRqS3M="
 
-    public init(webUrl: String, webSocketMediaServerUrl: String, webSocketBrokerUrl: String, callHash: String){
+    public init(webUrl: String, webSocketMediaServerUrl: String, webSocketBrokerUrl: String, webSocketBrokerPath: String, callHash: String){
         self.webUrl = webUrl
         self.webSocketMediaServerUrl = webSocketMediaServerUrl
         self.webSocketBrokerUrl = webSocketBrokerUrl
+        self.webSocketBrokerPath = webSocketBrokerPath
         self.callHash = callHash
     }
     
@@ -35,6 +37,11 @@ public struct TSAVideoCallConfig{
         return webSocketBrokerUrl
     }
     
+    public func getWebSocketBrokerPath() -> String{
+        return webSocketBrokerPath
+    }
+    
+    
     public func getCallHash() -> String{
         return callHash
     }
@@ -46,4 +53,6 @@ public struct TSAVideoCallConfig{
     public func getAuthData() -> String{
         return authData
     }
+    
+    
 }

@@ -9,6 +9,7 @@ import Foundation
 import Starscream
 import CommonCrypto
 import WebRTC
+import Alamofire
 
 enum SignalingChannelState : Int {
     case signalingChannelStateClosed
@@ -79,10 +80,10 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
             case .disconnected(let reason, let code):
                 isConnected = false
                 self.delegate?.onSocketDisconnected(code: NSNumber(value: code), message: reason)
-                print("websocket is disconnected: \(reason) with code: \(code)")
+                debugPrint("websocket is disconnected: \(reason) with code: \(code)")
             case .text(let string):
                 let json = string.toJSON() as! [String: Any]
-                print(json)
+                debugPrint(json)
                 guard let janus = json[janus] as? String else{
                     return
                 }
@@ -103,17 +104,17 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
                         }
                         transactionsDict.removeValue(forKey: transaction)
                     }else{
-                        print("onError \(json)")
+                        debugPrint("onError \(json)")
                     }
                     let error = TSAVideoCallError(errorType: TSAVideoCallError.ErrorType.MediaServerError, errorCode:  TSAVideoCallError.ErrorCode.MediaServerError, message: json.description)
                     self.delegate?.onError(error)
                 }else if janus == "ack" {
-                    print("ack")
+                    debugPrint("ack")
                 }else {
                     let handle = handleDict?[json["sender"] as! NSNumber]
                     
                     if (handle == nil) {
-                        print("handle id is null")
+                        debugPrint("handle id is null")
                     }else if(janus == "event") {
                         let plugin:[String: Any] = (json["plugindata"] as! [String: Any]) ["data"] as! [String:Any]
                         
@@ -144,13 +145,13 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
                             if let value = plugin["leaving"] as? String {
                                 if value == "ok" {
                                     self.delegate?.onLeaving(handle?.handleId)
-                                    print("publisher left")
+                                    debugPrint("publisher left")
                                 }
                             }else{
                                 let jHandle = feedDict[plugin["leaving"] as! NSNumber]
                                 if(jHandle != nil){
                                     self.delegate?.onLeaving(jHandle?.handleId)
-                                    print("subscriber left")
+                                    debugPrint("subscriber left")
                                 }
                             }
                         }
@@ -159,12 +160,12 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
                             if let value = plugin["unpublished"] as? String {
                                 if value == "ok" {
                                     self.delegate?.onUnpublished(handle?.handleId)
-                                    print("publisher unpublished")
+                                    debugPrint("publisher unpublished")
                                 }
                             }else{
                                 let jHandle = feedDict[plugin["unpublished"] as! NSNumber]
                                 self.delegate?.onUnpublished(jHandle?.handleId)
-                                print("subscriber unpublished")
+                                debugPrint("subscriber unpublished")
                             }
                         }
                         
@@ -178,7 +179,7 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
                 }
                 
             case .binary(let data):
-                print("received data: \(data.count)")
+                debugPrint("received data: \(data.count)")
             case .pong(_):
                 break
             case .ping(_):
@@ -193,7 +194,7 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
             case .cancelled:
                 isConnected = false
             case .connected(let headers):
-                print("websocket is connected: \(headers)")
+                debugPrint("websocket is connected: \(headers)")
                 isConnected = true
                 self.state = .signalingChannelStateOpen
                 createSession()
@@ -236,7 +237,8 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
                 self.delegate?.onPublisherRemoteJsep(handle?.handleId, dict: jsep)
             }
             self.handleDict![handle.handleId!] = handle
-            self.publisherJoinRoom(handle)
+            self.checkRoom(handle)
+            
         }
         videoCallTransaction.error = { data in
             let error = TSAVideoCallError(errorType: TSAVideoCallError.ErrorType.PublisherError, errorCode: TSAVideoCallError.ErrorCode.PublisherPluginNotAttached, message: data?.description)
@@ -435,9 +437,9 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
             "sdp": sdp1
         ]
         }
-        var offerMessage: [String : Any]? = nil
+        var answerMessage: [String : Any]? = nil
         if let jsep = jsep, let handleId = handleId {
-            offerMessage = [
+            answerMessage = [
             "janus": "message",
             "body": body,
             "jsep": jsep,
@@ -446,8 +448,7 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
             "handle_id": handleId
         ]
         }
-
-        socket.write(string: jsonToString(json: offerMessage as AnyObject))
+        socket.write(string: jsonToString(json: answerMessage as AnyObject))
     }
     
     public func configureMedia(handleId: NSNumber?, audio: Bool, video: Bool) {
@@ -592,6 +593,88 @@ public class TSAVideoCallSocket: NSObject, WebSocketDelegate{
         }
     }
     
+    func checkRoom(_ handle: TSAVideoCallHandle){
+        let transaction = randomString(withLength: 12)
+        let videoCallTransaction = TSAVideoCallTransaction()
+        videoCallTransaction.tid = transaction
+        videoCallTransaction.success = { data in
+            let plugin:[String: Any] = (data?["plugindata"] as! [String: Any]) ["data"] as! [String:Any]
+            if(plugin["exists"] as! NSNumber == 1){
+                self.publisherJoinRoom(handle)
+            }else{
+                self.createRoom(handle)
+            }
+        }
+        videoCallTransaction.error = { data in
+            let error = TSAVideoCallError(errorType: TSAVideoCallError.ErrorType.SessionError, errorCode: TSAVideoCallError.ErrorCode.SessionFailedToCheckRoom, message: data?.description)
+            self.delegate?.onError(error)
+        }
+        transactionsDict?[transaction] = videoCallTransaction
+        var body: [String : Any]? = nil
+       
+        body = [
+            "request": "exists",
+            "room": roomId
+        ]
+        
+        var message: [String : Any]? = nil
+        if let handleId = handle.handleId, let body = body {
+            message = [
+            "janus": "message",
+            "transaction": transaction,
+            "session_id": sessionId!,
+            "handle_id": handleId,
+            "body": body
+        ]
+        }
+        socket.write(string: jsonToString(json: message as AnyObject))
+        
+    }
+    
+    func createRoom(_ handle: TSAVideoCallHandle) {
+        let transaction = randomString(withLength: 12)
+        let videoCallTransaction = TSAVideoCallTransaction()
+        videoCallTransaction.tid = transaction
+        videoCallTransaction.success = { data in
+            let plugin:[String: Any] = (data?["plugindata"] as! [String: Any]) ["data"] as! [String:Any]
+            if(plugin["videoroom"] as! String == "created"){
+                self.publisherJoinRoom(handle)
+            }else{
+                self.checkRoom(handle)
+            }
+        }
+        
+        videoCallTransaction.error = { data in
+            let error = TSAVideoCallError(errorType: TSAVideoCallError.ErrorType.SessionError, errorCode: TSAVideoCallError.ErrorCode.SessionFailedToCreateRoom, message: data?.description)
+            self.delegate?.onError(error)
+        }
+        
+        transactionsDict?[transaction] = videoCallTransaction
+        var body: [String : Any]? = nil
+       
+        body = [
+            "request": "create",
+            "room": roomId,
+            "bitrate": 512000,
+            "bitrate_cap": true,
+            "fir_freq": 30,
+            "record": false,
+            "rec_dir": "/opt/janus/share/janus/recordings"
+        ]
+        
+        var message: [String : Any]? = nil
+        if let handleId = handle.handleId, let body = body {
+            message = [
+            "janus": "message",
+            "transaction": transaction,
+            "session_id": sessionId!,
+            "handle_id": handleId,
+            "body": body
+        ]
+        }
+        socket.write(string: jsonToString(json: message as AnyObject))
+    }
+    
     
 }
 
@@ -601,3 +684,5 @@ extension String {
         return try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
     }
 }
+
+

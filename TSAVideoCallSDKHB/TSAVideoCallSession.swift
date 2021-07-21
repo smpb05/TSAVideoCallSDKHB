@@ -156,7 +156,10 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         peerConnection!.answer(for: constraints, completionHandler: { sdp, error in
             peerConnection!.setLocalDescription(sdp!, completionHandler: { error in
             })
-            self.websocket.subscriberCreateAnswer(handleId, sdp: sdp)
+            //DispatchQueue.main.asyncAfter(deadline: .now()+2.0){
+                self.websocket.subscriberCreateAnswer(handleId, sdp: sdp)
+           // }
+           
         })
     }
     
@@ -221,12 +224,11 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         
         NotificationCenter.default.addObserver(self, selector: #selector(didSessionRouteChange(_:)), name: AVAudioSession.routeChangeNotification, object: nil)
         setSpeakerStates(enabled: true)
-        initBroker(config.getWebSocketBrokerURL())
 
     }
     
-    private func initBroker(_ url: String){
-        broker = TSAVideoCallBrokerSocket(brokerURL: url)
+    private func initBroker(_ url: String, path: String){
+        broker = TSAVideoCallBrokerSocket(brokerUrl: url, path: path)
         broker?.brokerDelegate = self
     }
     
@@ -234,6 +236,8 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         websocket = TSAVideoCallSocket(apiUrl: config.getWebSocketMediaServerURL(), roomId: roomId)
         RTCInitializeSSL();
         RTCSetupInternalTracer();
+        websocket.tryToConnect()
+        websocket.delegate = self
     }
     
     func createLocalAudioTrack() -> RTCAudioTrack? {
@@ -296,8 +300,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     public func connect(){
-        websocket.tryToConnect()
-        websocket.delegate = self
+        initBroker(config.getWebSocketBrokerURL(), path: config.getWebSocketBrokerPath())
     }
     
     public func publish(publisher: TSAVideoCallPublisher){
@@ -402,11 +405,13 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     func defaultSTUNServer() -> RTCIceServer? {
-        let array = ["stun:stun.l.google.com:19302",
+        let array =
+           ["stun:stun.l.google.com:19302",
                      "stun:stun1.l.google.com:19302",
                      "stun:stun2.l.google.com:19302",
                      "stun:stun3.l.google.com:19302",
-                     "stun:stun4.l.google.com:19302"]
+                     "stun:stun4.l.google.com:19302"
+        ]
         return RTCIceServer(urlStrings: array)
     }
     
@@ -480,7 +485,7 @@ extension TSAVideoCallSession{
         let headers: HTTPHeaders = ["Authorization": config.getAuthData()]
         let params = ["callHash": config.getCallHash()]
         
-        let request = AF.request(config.getWebURL(), method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers)
+        let request = AF.request(config.getWebURL()+"/call/check", method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers)
         request.responseJSON{ response in
             if let data = response.value as? [String: Any]{
                 if let status  = data["status"] as? String {
@@ -501,13 +506,12 @@ extension TSAVideoCallSession{
         let headers: HTTPHeaders = ["Authorization": config.getAuthData()]
         let params = ["callHash": config.getCallHash(), "appVersion": config.getLibVersion()]
         
-        let request = AF.request(config.getWebURL(), method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers)
+        let request = AF.request(config.getWebURL()+"/call/start", method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers)
         request.responseJSON{ response in
             if let data = response.value as? [String: Any]{
                 if let status  = data["status"] as? String {
                     if status.caseInsensitiveCompare("OK") == .orderedSame {
-                        let roomId = data["room"] as! NSNumber
-                        
+                         debugPrint("call start")
                     }else{
                         let error = TSAVideoCallSDK.TSAVideoCallError(errorType: TSAVideoCallSDK.TSAVideoCallError.ErrorType.SessionError, errorCode: TSAVideoCallSDK.TSAVideoCallError.ErrorCode.WebSocketError, message: "callStart error: \(String(describing: data["message"]))")
                         self.sessionDelegate?.onError(session: self, error: TSAVideoCallError(error: error))

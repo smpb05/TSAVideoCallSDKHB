@@ -41,6 +41,8 @@ public class TSAVideoCallError{
         case SubsciberFailedToLeaveRoom = 1009
         case PublisherFailedToConfigureMedia = 1010
         case WebSocketError = 1011
+        case SessionFailedToCreateRoom = 1012
+        case SessionFailedToCheckRoom = 1013
         
     }
     
