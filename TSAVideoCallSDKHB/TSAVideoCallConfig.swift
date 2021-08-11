@@ -14,15 +14,16 @@ public struct TSAVideoCallConfig{
     private var webSocketBrokerUrl: String
     private var webSocketBrokerPath: String
     private var callHash: String
-    private let libVersion = "0.2.5"
-    private let authData = "Basic dmlkZW9CYW5rOkhmeUxqdnlTdENidmRqS3M="
+    private let libVersion = "0.2.6"
+    private var authData: String
 
-    public init(webUrl: String, webSocketMediaServerUrl: String, webSocketBrokerUrl: String, webSocketBrokerPath: String, callHash: String){
+    public init(webUrl: String, webSocketMediaServerUrl: String, webSocketBrokerUrl: String, webSocketBrokerPath: String, callHash: String, authData: String){
         self.webUrl = webUrl
         self.webSocketMediaServerUrl = webSocketMediaServerUrl
         self.webSocketBrokerUrl = webSocketBrokerUrl
         self.webSocketBrokerPath = webSocketBrokerPath
         self.callHash = callHash
+        self.authData = authData
     }
     
     public func getWebURL() -> String{
@@ -54,5 +55,8 @@ public struct TSAVideoCallConfig{
         return authData
     }
     
+    internal mutating func updateCallHash(_ callHash: String){
+        self.callHash = callHash
+    }
     
 }

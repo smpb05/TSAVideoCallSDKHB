@@ -19,10 +19,65 @@ public protocol TSAVideoCallSessionDelegate: AnyObject {
     func onDisconnected(session: TSAVideoCallSession)
     func onStreamReceived(session: TSAVideoCallSession, stream: TSAVideoCallStream)
     func onStreamDropped(session: TSAVideoCallSession, stream: TSAVideoCallStream)
+    func onMessageReceived(session: TSAVideoCallSession, message: String)
+    func onFileReceived(session: TSAVideoCallSession, fileName: String, filePath: String)
     func onError(session: TSAVideoCallSession, error: TSAVideoCallError)
 }
 
 public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerConnectionDelegate, TSAVideoCallBrokerDelegate{
+    
+    public func onSubscriberStarted(_ room: NSNumber) {
+        broker?.sendRemoteStream(room: room)
+    }
+    
+    func onBiometricsEvent(event: String, data: [String : Any]?) {
+        if(event == "START_SELFIE"){
+            mPublisher?.makeFullScreen()
+        }else if(event == "SNAPSHOT"){
+            if let roomId = data?["room"] as? NSNumber{
+                mPublisher?.captureScreen(roomId)
+            }
+        }else{
+            
+        }
+        
+    }
+    
+    func onCallEvent(event: String, data: [String : Any]?) {
+        if(event == "FINISH"){
+            for subscriber in mSubscribers {
+                subscriber.delegate?.onDisconnected(subcriber: subscriber)
+            }
+        }else if(event == "REDIRECT"){
+            if let newCallHash = data?["callHash"] as? String{
+                self.config.updateCallHash(newCallHash)
+            }
+            self.connect()
+        }else{
+            
+        }
+    }
+    
+    func onRecordEvent(event: String) {
+        if event == "START" {
+            websocket.configure(handleId: publisherHandleId, record: true)
+        }
+    }
+    
+    func onChatEvent(event: String, data: [String : Any]?) {
+        if event == "MESSAGE" {
+            if let message = data?["textMessage"] as? String{
+                self.sessionDelegate?.onMessageReceived(session: self, message: message)
+            }
+        }else if event == "FILE" {
+            if let name =  data?["filename"] as? String {
+                if let path = data?["url"] as? String {
+                    self.sessionDelegate?.onFileReceived(session: self, fileName: name, filePath: path)
+                }
+            }
+        }else{}
+    }
+    
     
     
     public func onError(_ error: TSAVideoCallSDK.TSAVideoCallError) {
@@ -138,29 +193,34 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     public func subscriberHandleRemoteJsep(_ handleId: NSNumber?, dict jsep: [AnyHashable : Any]?) {
-        let peerConnection = createPeerConnection()
-        let tc = TSAVideoCallConnection()
-        tc.connection = peerConnection
-        tc.handleId = handleId
+        var tc: TSAVideoCallConnection? = nil
         if let handleId = handleId {
-            peerConnectionDict[handleId] = tc
-        }
-        let answerDescription = RTCSessionDescription(fromJSONDictionary: jsep)
-        peerConnection?.setRemoteDescription(answerDescription!, completionHandler: { error in
-        })
-        let mandatoryConstraints = [
-            "OfferToReceiveAudio": "true",
-            "OfferToReceiveVideo": "true"
-        ]
-        let constraints = RTCMediaConstraints(mandatoryConstraints: mandatoryConstraints, optionalConstraints: nil)
-        peerConnection!.answer(for: constraints, completionHandler: { sdp, error in
-            peerConnection!.setLocalDescription(sdp!, completionHandler: { error in
+            if(peerConnectionDict.keys.contains(handleId)){
+                tc = peerConnectionDict[handleId]
+            }else{
+                let peerConnection = createPeerConnection()
+                tc = TSAVideoCallConnection()
+                tc?.connection = peerConnection
+                tc?.handleId = handleId
+                peerConnectionDict[handleId] = tc
+            }
+            
+            let answerDescription = RTCSessionDescription(fromJSONDictionary: jsep)
+            peerConnectionDict[handleId]?.connection?.setRemoteDescription(answerDescription!, completionHandler: { error in
+                
             })
-            //DispatchQueue.main.asyncAfter(deadline: .now()+2.0){
-                self.websocket.subscriberCreateAnswer(handleId, sdp: sdp)
-           // }
-           
-        })
+            
+            let mandatoryConstraints = [
+                "OfferToReceiveAudio": "true",
+                "OfferToReceiveVideo": "true"
+            ]
+            
+            let constraints = RTCMediaConstraints(mandatoryConstraints: mandatoryConstraints, optionalConstraints: nil)
+            peerConnectionDict[handleId]?.connection?.answer(for: constraints, completionHandler: { sdp, error in
+                self.peerConnectionDict[handleId]?.connection?.setLocalDescription(sdp!, completionHandler: { error in })
+                    self.websocket.subscriberCreateAnswer(handleId, sdp: sdp)
+            })
+        }
     }
     
     public func onLeaving(_ handleId: NSNumber?) {
@@ -217,14 +277,15 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     
     var config: TSAVideoCallConfig
     var broker: TSAVideoCallBrokerSocket? = nil
+    var roomId: NSNumber? = nil
     
     public init(config: TSAVideoCallConfig) {
         self.config = config
         super.init()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(didSessionRouteChange(_:)), name: AVAudioSession.routeChangeNotification, object: nil)
         setSpeakerStates(enabled: true)
-
+        RTCInitializeSSL();
+        RTCSetupInternalTracer();
     }
     
     private func initBroker(_ url: String, path: String){
@@ -234,8 +295,6 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     
     private func initSession(_ roomId: NSNumber){
         websocket = TSAVideoCallSocket(apiUrl: config.getWebSocketMediaServerURL(), roomId: roomId)
-        RTCInitializeSSL();
-        RTCSetupInternalTracer();
         websocket.tryToConnect()
         websocket.delegate = self
     }
@@ -252,7 +311,8 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         let source = factory.avFoundationVideoSource(with: cameraConstraints)
         source.useBackCamera = useBackCamera
         let localVideoTrack = factory.videoTrack(with: source, trackId: mARDVideoTrackId)
-        mPublisher?.getVideoView().captureSession = source.captureSession
+        localVideoTrack.add(mPublisher!.getVideoView())
+        mPublisher?.getCameraPreview().captureSession = source.captureSession
         return localVideoTrack
     }
     
@@ -303,6 +363,21 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
         initBroker(config.getWebSocketBrokerURL(), path: config.getWebSocketBrokerPath())
     }
     
+    private func disconnect(){
+        websocket.disconnect()
+        peerConnectionDict.removeAll()
+        publisherPeerConnection?.close()
+        publisherHandleId = nil
+        localVideoTrack = nil
+        localAudioTrack = nil
+        mPublisher = nil
+        mSubscribers.removeAll()
+        mSubscribersVideoSize.removeAll()
+        broker?.stop()
+    
+        
+    }
+    
     public func publish(publisher: TSAVideoCallPublisher){
         mPublisher = publisher
         createPublisherPeerConnection()
@@ -326,8 +401,8 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     
-    internal func switchCamera(){
-        if let session = mPublisher?.getVideoView().captureSession {
+    internal func switchCameraPreview(){
+        if let session = mPublisher?.getCameraPreview().captureSession {
             guard let cureentCameraInput: AVCaptureInput = session.inputs.first else {
                 return
             }
@@ -353,7 +428,7 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
             }else{
                 session.addInput(newVideoInput)
             }
-            
+
             session.commitConfiguration()
         }
     }
@@ -475,8 +550,14 @@ public class TSAVideoCallSession: NSObject, TSAVideoCallSocketDelegate, RTCPeerC
     }
     
     internal func hangup(){
-        websocket.unpublish(handleId: publisherHandleId)
+        if let room = roomId {
+            broker?.sendFinish(room: room)
+        }
+        disconnect()
     }
+    
+
+    
 }
 
 extension TSAVideoCallSession{
@@ -490,8 +571,9 @@ extension TSAVideoCallSession{
             if let data = response.value as? [String: Any]{
                 if let status  = data["status"] as? String {
                     if status.caseInsensitiveCompare("OK") == .orderedSame {
-                        let roomId = data["room"] as! NSNumber
-                        self.initSession(roomId)
+                        self.roomId = data["room"] as? NSNumber
+                        self.broker?.joinRoom(room: self.roomId!)
+                        self.initSession(self.roomId!)
                     }else{
                         let error = TSAVideoCallSDK.TSAVideoCallError(errorType: TSAVideoCallSDK.TSAVideoCallError.ErrorType.SessionError, errorCode: TSAVideoCallSDK.TSAVideoCallError.ErrorCode.WebSocketError, message: "callCheck error: \(String(describing: data["message"]))")
                         self.sessionDelegate?.onError(session: self, error: TSAVideoCallError(error: error))
@@ -514,6 +596,25 @@ extension TSAVideoCallSession{
                          debugPrint("call start")
                     }else{
                         let error = TSAVideoCallSDK.TSAVideoCallError(errorType: TSAVideoCallSDK.TSAVideoCallError.ErrorType.SessionError, errorCode: TSAVideoCallSDK.TSAVideoCallError.ErrorCode.WebSocketError, message: "callStart error: \(String(describing: data["message"]))")
+                        self.sessionDelegate?.onError(session: self, error: TSAVideoCallError(error: error))
+                    }
+                }
+            }
+        }
+    }
+    
+    func sendSnapshot(base64: String, roomId: NSNumber){
+
+        let headers: HTTPHeaders = ["Authorization": config.getAuthData()]
+        let params = ["room": "\(roomId)", "selfie": base64]
+        let request = AF.request(config.getWebURL()+"/file/uploadImages", method: .post, parameters: params, encoder: JSONParameterEncoder.default, headers: headers)
+        request.responseJSON{ response in
+            if let data = response.value as? [String: Any]{
+                if let status  = data["status"] as? String {
+                    if status.caseInsensitiveCompare("OK") == .orderedSame {
+                         debugPrint("photo sent")
+                    }else{
+                        let error = TSAVideoCallSDK.TSAVideoCallError(errorType: TSAVideoCallSDK.TSAVideoCallError.ErrorType.SessionError, errorCode: TSAVideoCallSDK.TSAVideoCallError.ErrorCode.SessionFailedToSendSnapshot, message: "uploadImages error: \(String(describing: data["message"]))")
                         self.sessionDelegate?.onError(session: self, error: TSAVideoCallError(error: error))
                     }
                 }

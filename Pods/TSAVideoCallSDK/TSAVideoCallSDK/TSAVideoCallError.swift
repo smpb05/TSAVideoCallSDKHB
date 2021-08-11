@@ -43,7 +43,8 @@ public class TSAVideoCallError{
         case WebSocketError = 1011
         case SessionFailedToCreateRoom = 1012
         case SessionFailedToCheckRoom = 1013
-        
+        case SessionFailedToSendSnapshot = 1014
+        case PublisherFailedToConfigureRecord = 1015
     }
     
     public func getErrorType() -> ErrorType{
